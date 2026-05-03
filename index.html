@@ -504,8 +504,8 @@
 
   .reveal {
     opacity: 0;
-    transform: translateY(16px) scale(0.97);
-    transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    transform: translateY(32px) scale(0.94);
+    transition: opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 1.1s cubic-bezier(0.16,1,0.3,1);
   }
   .reveal.visible {
     opacity: 1;
@@ -1670,10 +1670,10 @@ statNums.forEach(el => countObserver.observe(el));
 
 // ── Single reveal observer for all animated elements
 const allRevealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-scale, .section-header');
-allRevealEls.forEach(el => {
+allRevealEls.forEach((el, i) => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(16px) scale(0.97)';
-  el.style.transition = 'opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1)';
+  el.style.transform = 'translateY(32px) scale(0.94)';
+  el.style.transition = `opacity 1.1s cubic-bezier(0.16,1,0.3,1) ${i * 0.05}s, transform 1.1s cubic-bezier(0.16,1,0.3,1) ${i * 0.05}s`;
 });
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
