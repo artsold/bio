@@ -1574,17 +1574,21 @@ function buildCards() {
 }
 
 function updatePosition() {
-  const cardW = 280; // card + gap
-  const offset = currentIndex * cardW;
-  track.style.transform = `translateX(-${offset}px)`;
+  const card = track.querySelector('.car-card');
+  const cardW = card ? card.offsetWidth + 20 : 280;
+  const maxScroll = track.scrollWidth - track.clientWidth;
+  const targetScroll = currentIndex >= filteredVideos.length - 1
+    ? maxScroll
+    : currentIndex * cardW;
 
-  // Update dots
+  track.scrollTo({ left: targetScroll, behavior: 'smooth' });
+
   document.querySelectorAll(".car-dot").forEach((d, i) => {
     d.classList.toggle("active", i === currentIndex);
   });
 
   prevBtn.disabled = currentIndex === 0;
-  nextBtn.disabled = currentIndex >= filteredVideos.length - CARDS_VISIBLE;
+  nextBtn.disabled = currentIndex >= filteredVideos.length - 1;
 }
 
 function goTo(i) {
