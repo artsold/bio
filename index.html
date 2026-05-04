@@ -740,21 +740,23 @@
   /* Dots */
   .carousel-dots {
     display: flex;
-    gap: 6px;
-    justify-content: center;
-    padding: 0 48px 32px;
+    gap: 5px;
+    justify-content: flex-start;
+    padding: 12px 48px 32px;
   }
   .car-dot {
-    width: 20px; height: 2px;
-    background: rgba(0,0,0,0.25);
+    width: 24px; height: 2px;
+    background: rgba(0,0,0,0.18);
     border: none;
-    cursor: none;
-    transition: background 0.2s, width 0.2s;
+    cursor: pointer;
+    transition: background 0.25s, width 0.25s;
+    flex-shrink: 0;
   }
   .car-dot.active {
     background: var(--accent);
-    width: 32px;
+    width: 40px;
   }
+  .car-dot:hover { background: rgba(0,0,0,0.4); }
 
   /* Lightbox */
   .lightbox { display: none !important; }
@@ -813,24 +815,10 @@
 
   @media (max-width: 768px) {
     .portfolio-filters { padding: 16px 24px; }
-    .carousel-wrap {
-    position: relative;
-    overflow: hidden;
-    max-width: 100%;
-    padding: 40px 0 40px 48px;
-    cursor: grab;
-    user-select: none;
-  }
-    .car-card {
-    flex: 0 0 260px;
-    scroll-snap-align: start;
-    position: relative;
-    border: 1px solid var(--line);
-    overflow: hidden;
-    transition: transform 0.3s, border-color 0.3s;
-    cursor: pointer;
-  }
-    .carousel-dots { padding: 0 24px 24px; }
+    .carousel-wrap { padding: 24px 0 24px 24px; }
+    .car-card { flex: 0 0 200px; }
+    .car-arrows { padding: 16px 24px 0; }
+    .carousel-dots { padding: 12px 24px 24px; }
     .lb-inner { max-width: 95vw; }
   }
 
@@ -1581,12 +1569,21 @@ track.addEventListener("mouseleave", () => { isDragging = false; track.style.cur
 
 // Sync currentIndex with scroll position
 track.addEventListener("scroll", () => {
-  currentIndex = Math.round(track.scrollLeft / 280);
+  const card = track.querySelector('.car-card');
+  const cardW = card ? card.offsetWidth + 20 : 280;
+  const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+
+  if (atEnd) {
+    currentIndex = filteredVideos.length - 1;
+  } else {
+    currentIndex = Math.round(track.scrollLeft / cardW);
+  }
+
   document.querySelectorAll(".car-dot").forEach((d, i) => {
     d.classList.toggle("active", i === currentIndex);
   });
   prevBtn.disabled = currentIndex === 0;
-  nextBtn.disabled = currentIndex >= filteredVideos.length - CARDS_VISIBLE;
+  nextBtn.disabled = currentIndex >= filteredVideos.length - 1;
 }, { passive: true });
 
 // Lightbox
