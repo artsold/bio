@@ -742,26 +742,27 @@
   }
 
   /* Arrows */
+  .car-arrows {
+    display: flex;
+    gap: 8px;
+    padding: 16px 48px 0;
+  }
   .car-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     width: 40px; height: 40px;
     border: 1px solid var(--line);
-    background: rgba(75,83,53,0.7);
+    background: transparent;
     color: var(--text-primary);
-    font-size: 14px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: none;
+    cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
-    z-index: 10;
+    flex-shrink: 0;
   }
-  .car-arrow:hover { background: rgba(107,110,75,0.25); border-color: var(--olive); color: var(--text-primary); }
-  .car-prev { left: 8px; }
-  .car-next { right: 8px; }
-  .car-arrow:disabled { opacity: 0.3; }
+  .car-arrow:hover { background: var(--accent); border-color: var(--accent); color: #F5F5F5; }
+  .car-arrow:disabled { opacity: 0.25; pointer-events: none; }
+  .car-prev, .car-next { position: static; transform: none; }
 
   /* Dots */
   .carousel-dots {
@@ -1386,7 +1387,10 @@
   <div class="carousel-wrap">
     <div class="carousel-track" id="carouselTrack"></div>
 
-    <!-- Nav arrows -->
+  </div>
+
+  <!-- Arrows -->
+  <div class="car-arrows">
     <button class="car-arrow car-prev" id="carPrev" aria-label="Previous">&#8592;</button>
     <button class="car-arrow car-next" id="carNext" aria-label="Next">&#8594;</button>
   </div>
@@ -1547,9 +1551,9 @@ function buildCards() {
           src="https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&mute=1&loop=1&playlist=${v.id}&controls=0&playsinline=1&rel=0&showinfo=0&modestbranding=1&fs=0&iv_load_policy=3&disablekb=1"
           frameborder="0"
           allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
           style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
         ></iframe>
+        <div style="position:absolute;inset:0;z-index:2;"></div>
       </div>
       <div class="car-info">
         <div class="car-info-tag">${v.tag}</div>
