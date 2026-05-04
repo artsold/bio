@@ -616,33 +616,6 @@
 
 
   /* ===== PORTFOLIO ===== */
-  .portfolio-filters {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    padding: 24px 48px;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .pf-btn {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border: 1px solid rgba(0,0,0,0.18);
-    background: rgba(255,255,255,0.25);
-    color: var(--text-muted);
-    cursor: none;
-    transition: all 0.2s;
-  }
-  .pf-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(72,45,51,0.08); }
-  .pf-btn.active {
-    background: transparent;
-    border-color: var(--accent);
-    border-width: 2px;
-    color: var(--accent);
-  }
 
   .carousel-wrap {
     position: relative;
@@ -1374,16 +1347,7 @@
     <span class="section-num">04</span>
     <h2>Portfolio</h2>
   </div>
-
-  <!-- Filter tabs -->
-  <div class="portfolio-filters reveal">
-    <button class="pf-btn active" data-filter="all">All</button>
-    <button class="pf-btn" data-filter="UA Ad">UA Ads</button>
-    <button class="pf-btn" data-filter="Hook Test">Hook Tests</button>
-    <button class="pf-btn" data-filter="Hero Ad">Hero Ads</button>
-  </div>
-
-  <!-- Carousel track -->
+<!-- Carousel track -->
   <div class="carousel-wrap">
     <div class="carousel-track" id="carouselTrack"></div>
 
@@ -1556,7 +1520,6 @@ function buildCards() {
         <div style="position:absolute;inset:0;z-index:2;"></div>
       </div>
       <div class="car-info">
-        <div class="car-info-tag">${v.tag}</div>
         <div class="car-info-label">${v.label}</div>
       </div>
     `;
@@ -1625,19 +1588,6 @@ track.addEventListener("scroll", () => {
   prevBtn.disabled = currentIndex === 0;
   nextBtn.disabled = currentIndex >= filteredVideos.length - CARDS_VISIBLE;
 }, { passive: true });
-
-// Filter
-document.querySelectorAll(".pf-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".pf-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    activeFilter = btn.dataset.filter;
-    filteredVideos = activeFilter === "all"
-      ? [...VIDEOS]
-      : VIDEOS.filter(v => v.tag === activeFilter || (activeFilter === "A/B Test" && v.tag === "A/B Variant"));
-    buildCards();
-  });
-});
 
 // Lightbox
 function openLightbox(v) {
