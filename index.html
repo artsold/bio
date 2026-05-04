@@ -1108,6 +1108,7 @@
   }
 
 </style>
+<script src="https://player.vimeo.com/api/player.js" defer></script>
 </head>
 <body>
 
@@ -1122,7 +1123,7 @@
         <nav>
       <a href="#about"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>About</a>
       <a href="#experience"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Work</a>
-      <a href="#education"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Education</a><a href="#contact"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Contact</a>
+      <a href="#education"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Education</a><a href="#portfolio"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Portfolio</a><a href="#contact"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Contact</a>
     </nav>
   </div>
 
@@ -1370,7 +1371,7 @@
     <button class="pf-btn active" data-filter="all">All</button>
     <button class="pf-btn" data-filter="UA Ad">UA Ads</button>
     <button class="pf-btn" data-filter="Hook Test">Hook Tests</button>
-    <button class="pf-btn" data-filter="A/B Test">A/B Tests</button>
+    <button class="pf-btn" data-filter="Hook Test">Hook Tests</button>
     <button class="pf-btn" data-filter="Motion">Motion</button>
   </div>
 
@@ -1390,7 +1391,7 @@
   <div class="lightbox" id="lightbox">
     <button class="lb-close" id="lbClose">&#x2715;</button>
     <div class="lb-inner">
-      <video id="lbFrame" controls playsinline></video>
+      <iframe id="lbFrame" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <div class="lb-meta">
         <span class="lb-tag" id="lbTag"></span>
         <span class="lb-label" id="lbLabel"></span>
@@ -1495,16 +1496,14 @@
 
 <script>
 const VIDEOS = [
-  { id: "1j2jDlBu2EBP-tjncqSSVWQRvrSefeyBS", label: "Cooking Fever", tag: "UA Ad" },
-  { id: "17EYSJ13686WcpBBxhGkplQMIJgqL8GYn", label: "Cooking Fever Duels", tag: "UA Ad" },
-  { id: "1S524ke_oTtDRhYBMhe2Go8WxWBDPR3x6", label: "Airplane Chefs", tag: "UA Ad" },
-  { id: "1WYI3RsjZ9fSeHXdwIZRz7l7irlMNuu_g", label: "Murder by Choice", tag: "Hook Test" },
-  { id: "1msS_jSvjy4i4vizjMw2j6QdVUuYCmBp9", label: "Happy Clinic", tag: "UA Ad" },
-  { id: "1zrspgNVMsKlPXNEn5cux6HlMIY3w8bg-", label: "Murder in the Alps", tag: "UA Ad" },
-  { id: "1fe0k9CwQoeWKYIGKaj27bY5-Ls_mp_HB", label: "Pocket Styler", tag: "UA Ad" },
-  { id: "1xNmO6LXuSp63s-L2PqbsGRsbyqK16tnJ", label: "War Sector", tag: "Hero Ad" },
-  { id: "1bHLOnrqgI2sBMQ_0fBJufn-bnlS9ZLa8", label: "Sniper Arena", tag: "UA Ad" },
-  { id: "1l_rjb1gEOzZXcIHxn31LGmJGhlThHHMv", label: "Dating Puzzle", tag: "Hook Test" },
+  { id: "1189007689", label: "Airplane Chefs", tag: "UA Ad" },
+  { id: "1189007661", label: "Cooking Fever", tag: "UA Ad" },
+  { id: "1189007628", label: "Cooking Fever Duels", tag: "UA Ad" },
+  { id: "1189007612", label: "Happy Clinic", tag: "UA Ad" },
+  { id: "1189007585", label: "Murder by Choice", tag: "Hook Test" },
+  { id: "1189007562", label: "Murder in the Alps", tag: "UA Ad" },
+  { id: "1189007517", label: "Sniper Arena", tag: "UA Ad" },
+  { id: "1189007539", label: "War Sector", tag: "Hero Ad" },
 ];
 
 let activeFilter = "all";
@@ -1523,7 +1522,7 @@ const lbLabel = document.getElementById("lbLabel");
 const lbClose = document.getElementById("lbClose");
 
 function driveEmbed(id) {
-  return `https://drive.google.com/uc?export=download&id=${id}`;
+  return `https://player.vimeo.com/video/${id}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1`;
 }
 
 function buildCards() {
@@ -1604,7 +1603,6 @@ document.querySelectorAll(".pf-btn").forEach(btn => {
 // Lightbox
 function openLightbox(v) {
   lbFrame.src = driveEmbed(v.id);
-  lbFrame.load();
   lbTag.textContent = v.tag;
   lbLabel.textContent = v.label;
   lightbox.classList.add("open");
@@ -1613,9 +1611,7 @@ function openLightbox(v) {
 
 function closeLightbox() {
   lightbox.classList.remove("open");
-  lbFrame.pause();
-  lbFrame.removeAttribute("src");
-  lbFrame.load();
+  lbFrame.src = "";
   document.body.style.overflow = "";
 }
 
