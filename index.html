@@ -649,27 +649,34 @@
     overflow: hidden;
     max-width: 100%;
     padding: 40px 0 40px 48px;
+    cursor: grab;
+    user-select: none;
   }
 
   .carousel-track {
     display: flex;
     gap: 20px;
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    padding-right: 48px;
     cursor: grab;
     user-select: none;
-    min-width: 0;
   }
+  .carousel-track::-webkit-scrollbar { display: none; }
+  .carousel-track:active { cursor: grabbing; }
   .carousel-track:active { cursor: grabbing; }
 
   .car-card {
     flex: 0 0 260px;
+    scroll-snap-align: start;
     position: relative;
     border: 1px solid var(--line);
     overflow: hidden;
     transition: transform 0.3s, border-color 0.3s;
-    cursor: none;
-    
+    cursor: pointer;
   }
   .car-card:hover {
     transform: translateY(-4px);
@@ -832,8 +839,23 @@
 
   @media (max-width: 768px) {
     .portfolio-filters { padding: 16px 24px; }
-    .carousel-wrap { padding: 24px 0 24px 24px; }
-    .car-card { flex: 0 0 200px; }
+    .carousel-wrap {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    padding: 40px 0 40px 48px;
+    cursor: grab;
+    user-select: none;
+  }
+    .car-card {
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+    position: relative;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+    cursor: pointer;
+  }
     .carousel-dots { padding: 0 24px 24px; }
     .lb-inner { max-width: 95vw; }
   }
@@ -969,7 +991,15 @@
   header.loaded .hero-stat::before { transform: scaleX(1); }
 
   /* Portfolio card stagger */
-  .car-card { opacity: 0; transform: translateY(16px); }
+  .car-card {
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+    position: relative;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+    cursor: pointer;
+  }
   .car-card.card-visible {
     opacity: 1;
     transform: translateY(0);
@@ -1514,7 +1544,7 @@ function buildCards() {
     card.innerHTML = `
       <div class="car-thumb">
         <iframe
-          src="https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&mute=1&loop=1&playlist=${v.id}&controls=0&playsinline=1&rel=0&showinfo=0&modestbranding=1"
+          src="https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&mute=1&loop=1&playlist=${v.id}&controls=0&playsinline=1&rel=0&showinfo=0&modestbranding=1&fs=0&iv_load_policy=3&disablekb=1"
           frameborder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen
@@ -1561,15 +1591,32 @@ function goTo(i) {
 prevBtn.addEventListener("click", () => goTo(currentIndex - 1));
 nextBtn.addEventListener("click", () => goTo(currentIndex + 1));
 
-// Drag support
-let dragStart = null;
-track.addEventListener("mousedown", e => { dragStart = e.clientX; });
-track.addEventListener("mouseup", e => {
-  if (dragStart === null) return;
-  const diff = dragStart - e.clientX;
-  if (Math.abs(diff) > 50) goTo(currentIndex + (diff > 0 ? 1 : -1));
-  dragStart = null;
+// Mouse drag scroll
+let isDragging = false, startX = 0, scrollLeft = 0;
+track.addEventListener("mousedown", e => {
+  isDragging = true;
+  startX = e.pageX - track.offsetLeft;
+  scrollLeft = track.scrollLeft;
+  track.style.cursor = 'grabbing';
 });
+track.addEventListener("mousemove", e => {
+  if (!isDragging) return;
+  e.preventDefault();
+  const x = e.pageX - track.offsetLeft;
+  track.scrollLeft = scrollLeft - (x - startX);
+});
+track.addEventListener("mouseup", () => { isDragging = false; track.style.cursor = 'grab'; });
+track.addEventListener("mouseleave", () => { isDragging = false; track.style.cursor = 'grab'; });
+
+// Sync currentIndex with scroll position
+track.addEventListener("scroll", () => {
+  currentIndex = Math.round(track.scrollLeft / 280);
+  document.querySelectorAll(".car-dot").forEach((d, i) => {
+    d.classList.toggle("active", i === currentIndex);
+  });
+  prevBtn.disabled = currentIndex === 0;
+  nextBtn.disabled = currentIndex >= filteredVideos.length - CARDS_VISIBLE;
+}, { passive: true });
 
 // Filter
 document.querySelectorAll(".pf-btn").forEach(btn => {
