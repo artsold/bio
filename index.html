@@ -679,7 +679,7 @@
   .car-thumb {
     width: 100%;
     aspect-ratio: 9/16;
-    background: rgba(0,0,0,0.3);
+    background: #2a2a1a;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1371,8 +1371,7 @@
     <button class="pf-btn active" data-filter="all">All</button>
     <button class="pf-btn" data-filter="UA Ad">UA Ads</button>
     <button class="pf-btn" data-filter="Hook Test">Hook Tests</button>
-    <button class="pf-btn" data-filter="Hook Test">Hook Tests</button>
-    <button class="pf-btn" data-filter="Motion">Motion</button>
+    <button class="pf-btn" data-filter="Hero Ad">Hero Ads</button>
   </div>
 
   <!-- Carousel track -->
@@ -1391,7 +1390,7 @@
   <div class="lightbox" id="lightbox">
     <button class="lb-close" id="lbClose">&#x2715;</button>
     <div class="lb-inner">
-      <iframe id="lbFrame" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe id="lbFrame" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
       <div class="lb-meta">
         <span class="lb-tag" id="lbTag"></span>
         <span class="lb-label" id="lbLabel"></span>
@@ -1496,14 +1495,14 @@
 
 <script>
 const VIDEOS = [
-  { id: "1189007689", label: "Airplane Chefs", tag: "UA Ad" },
-  { id: "1189007661", label: "Cooking Fever", tag: "UA Ad" },
-  { id: "1189007628", label: "Cooking Fever Duels", tag: "UA Ad" },
-  { id: "1189007612", label: "Happy Clinic", tag: "UA Ad" },
-  { id: "1189007585", label: "Murder by Choice", tag: "Hook Test" },
-  { id: "1189007562", label: "Murder in the Alps", tag: "UA Ad" },
-  { id: "1189007517", label: "Sniper Arena", tag: "UA Ad" },
-  { id: "1189007539", label: "War Sector", tag: "Hero Ad" },
+  { id: "GN_d3L-CyPk", label: "Airplane Chefs", tag: "UA Ad" },
+  { id: "A3iu7YE_jVM", label: "Cooking Fever", tag: "UA Ad" },
+  { id: "QUwZglDG3pQ", label: "Cooking Fever Duels", tag: "UA Ad" },
+  { id: "pAoLSMh7zlQ", label: "Happy Clinic", tag: "UA Ad" },
+  { id: "jgUprjQJv28", label: "Murder by Choice", tag: "Hook Test" },
+  { id: "BByox-1JFPk", label: "Murder in the Alps", tag: "UA Ad" },
+  { id: "wuN-IWKt5Yk", label: "Sniper Arena", tag: "UA Ad" },
+  { id: "mVP9dEkILPo", label: "War Sector", tag: "Hero Ad" },
 ];
 
 let activeFilter = "all";
@@ -1522,8 +1521,9 @@ const lbLabel = document.getElementById("lbLabel");
 const lbClose = document.getElementById("lbClose");
 
 function driveEmbed(id) {
-  return `https://player.vimeo.com/video/${id}?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1`;
+  return `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&playsinline=1&rel=0&modestbranding=1`;
 }
+function vimeoUrl(id) { return `https://youtu.be/${id}`; }
 
 function buildCards() {
   track.innerHTML = "";
@@ -1534,7 +1534,7 @@ function buildCards() {
     const card = document.createElement("div");
     card.className = "car-card reveal";
     card.innerHTML = `
-      <div class="car-thumb">
+      <div class="car-thumb" style="background:url(https://img.youtube.com/vi/${v.id}/hqdefault.jpg) center/cover no-repeat;">
         <div class="car-play"><div class="play-icon"></div></div>
       </div>
       <div class="car-info">
