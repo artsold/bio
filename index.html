@@ -56,7 +56,7 @@ header {
 min-height: 100vh;
 display: grid;
 grid-template-rows: auto 1fr auto;
-border-bottom: 1px solid var(–line);
+border-bottom: 1px solid var(--line);
 position: relative;
 overflow: hidden;
 }
@@ -76,14 +76,14 @@ display: flex;
 justify-content: space-between;
 align-items: flex-start;
 padding: 28px 48px;
-border-bottom: 1px solid var(–line);
+border-bottom: 1px solid var(--line);
 }
 
 .logo-mark {
 font-size: 12px;
 letter-spacing: 0.25em;
 text-transform: uppercase;
-color: var(–-text-muted);
+color: var(--text-muted);
 }
 
 nav { display: flex; gap: 32px; }
@@ -91,7 +91,7 @@ nav a {
 font-size: 12px;
 letter-spacing: 0.2em;
 text-transform: uppercase;
-color: var(-–text-muted);
+color: var(--text-muted);
 transition: color 0.2s;
 position: relative;
 overflow: hidden;
@@ -102,7 +102,7 @@ content: ‘’;
 position: absolute;
 bottom: -2px; left: 0;
 width: 100%; height: 1px;
-background: var(–moss);
+background: var(--moss);
 transform: translateX(-101%);
 transition: transform 0.3s ease;
 }
@@ -246,7 +246,7 @@ content: ‘’;
 position: absolute;
 bottom: 0; left: 0; right: 0;
 height: 2px;
-background: var(–accent);
+background: var(--accent);
 transform: scaleX(0);
 transform-origin: left;
 transition: transform 1s 1.2s cubic-bezier(0.16,1,0.3,1);
@@ -329,7 +329,7 @@ letter-spacing: 0.25em;
 color: var(--text-secondary);
 padding: 0 32px;
 }
-.marquee-item span { color: var(–accent); margin-right: 8px; }
+.marquee-item span { color: var(--accent); margin-right: 8px; }
 
 /* ── ABOUT ────────────────────────────────────────────── */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; }
@@ -355,7 +355,7 @@ font-size: 12px;
 letter-spacing: 0.1em;
 padding: 5px 12px;
 border: 1px solid rgba(0,0,0,0.18);
-color: var(–text-muted);
+color: var(--text-muted);
 text-transform: uppercase;
 transition: all 0.2s;
 background: rgba(255,255,255,0.18);
@@ -371,7 +371,7 @@ background: rgba(44,62,80,0.35);
 display: grid;
 grid-template-columns: 200px 1fr 160px;
 padding: 36px 48px;
-border-bottom: 1px solid var(–line);
+border-bottom: 1px solid var(--line);
 transition: background 0.3s;
 position: relative;
 overflow: hidden;
@@ -515,7 +515,7 @@ padding: 16px 48px 0;
 width: 40px; height: 40px;
 border: 1px solid var(--line);
 background: transparent;
-color: var(–text-primary);
+color: var(--text-primary);
 font-size: 16px;
 display: flex;
 align-items: center;
@@ -533,7 +533,7 @@ overflow: hidden;
 content: ‘’;
 position: absolute;
 inset: 0;
-background: radial-gradient(circle at var(–mx,50%) var(–my,50%), rgba(255,255,255,0.08) 0%, transparent 70%);
+background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.08) 0%, transparent 70%);
 opacity: 0;
 transition: opacity 0.3s;
 pointer-events: none;
@@ -605,7 +605,7 @@ color: var(--accent);
 border: 1px solid var(--accent);
 padding: 3px 8px;
 }
-.lb-label { font-size: 12px; color: var(–text-primary); letter-spacing: 0.08em; }
+.lb-label { font-size: 12px; color: var(--text-primary); letter-spacing: 0.08em; }
 
 /* ── CONTACT ──────────────────────────────────────────── */
 .contact-inner {
@@ -645,7 +645,7 @@ color: var(--text-muted);
 font-size: 12px;
 letter-spacing: 0.1em;
 padding: 14px 0;
-border-bottom: 1px solid var(–line);
+border-bottom: 1px solid var(--line);
 transition: color 0.2s;
 }
 .contact-link:hover { color: var(--text-secondary); }
@@ -687,7 +687,7 @@ gap: 10px;
 padding: 14px 32px;
 background: transparent;
 border: 1.5px solid var(--burgundy);
-color: var(–burgundy);
+color: var(--burgundy);
 font-family: ‘DM Mono’, ‘Courier New’, monospace;
 font-size: 11px;
 letter-spacing: 0.12em;
