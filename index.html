@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MXNEXH767"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-0MXNEXH767');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Artiom Soldatov — Motion Designer & Creative Strategist</title>
+<title>Artiom Soldatov — Motion Designer</title>
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAIACAAAAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAEdJREFUeJxj3H9owX8GCgATJZqHiQEs+CRrwhrg7JZVDVjV4HQBsmZsfLwG4FKMTXzgAxGrAbgCDJs4ThegK8ZlKONoXmAAAJRwFWH1z/DkAAAAAElFTkSuQmCC">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -449,7 +448,7 @@
   .exp-item:nth-child(5) { transition-delay: 0.32s; }
   .exp-item:nth-child(6) { transition-delay: 0.40s; }
 
-  /* ── WORK ────────────────────────────────────────── */
+  /* ── PORTFOLIO ────────────────────────────────────────── */
   .carousel-wrap {
     overflow: hidden;
     max-width: 100%;
@@ -823,6 +822,119 @@
     footer { padding: 20px 24px; flex-direction: column; gap: 8px; }
     .lb-inner { max-width: 95vw; }
   }
+
+  
+  /* ── SECTION BACKGROUNDS ─────────────────────────── */
+
+  /* ABOUT — dark moss */
+  #about {
+    background: #2C3020;
+    color: #D0D3B0;
+  }
+  #about h2, #about .section-num { color: #D0D3B0; }
+  #about .about-text p { color: #b0b398; }
+  #about .section-header { border-bottom-color: #D0D3B0; }
+  #about .section-header::after { background: #D0D3B0; }
+  #about .skill-group-label { color: #9A9C84; }
+  #about .tag { border-color: rgba(208,211,176,0.25); color: #b0b398; background: rgba(208,211,176,0.06); }
+  #about .tag:hover { border-color: #D0D3B0; color: #D0D3B0; background: rgba(208,211,176,0.12); }
+  #about .about-text { border-right-color: rgba(208,211,176,0.12); }
+
+  /* WORK — light sage */
+  #work {
+    background: #C8CBAA;
+    color: #1a1208;
+  }
+  #work h2, #work .section-num { color: #5a5a48; }
+  #work .section-header { border-bottom-color: #3B1820; }
+  #work .section-header::after { background: #3B1820; }
+  #work .car-info-label { color: #1a1208; }
+  #work .car-arrow { border-color: rgba(0,0,0,0.18); color: #1a1208; }
+  #work .car-arrow:hover { background: #3B1820; border-color: #3B1820; color: #C8CBAA; }
+  #work .car-dot { background: rgba(0,0,0,0.15); }
+  #work .car-dot.active { background: #3B1820; }
+  #work .car-card { border-color: rgba(0,0,0,0.12); }
+
+  /* EXPERIENCE inside #work */
+  #experience h2, #experience .section-num { color: #D0D3B0; }
+  #experience .exp-role { color: #D0D3B0; }
+  #experience .exp-company { color: #e0c8c8; }
+  #experience .exp-desc { color: #b09898; }
+  #experience .exp-period { color: #9a7878; }
+  #experience .exp-item { border-bottom-color: rgba(208,211,176,0.1); }
+  #experience .exp-item::before { background: #D0D3B0; }
+  #experience .exp-item:hover { background: rgba(208,211,176,0.05); }
+  #experience .exp-divider { color: #9a7878; border-bottom-color: rgba(208,211,176,0.08); background: rgba(0,0,0,0.08); }
+  #experience .section-header { border-bottom-color: #D0D3B0; }
+  #experience .section-header::after { background: #D0D3B0; }
+
+  /* EDUCATION — light sage */
+  #education {
+    background: #C8CBAA;
+    color: #1a1208;
+  }
+  #education h2, #education .section-num { color: #5a5a48; }
+  #education .exp-role { color: #1a1208; }
+  #education .exp-company { color: #3B1820; }
+  #education .exp-desc { color: #5a5a48; }
+  #education .exp-period { color: #7a7a60; }
+  #education .exp-item { border-bottom-color: rgba(0,0,0,0.1); }
+  #education .exp-item:hover { background: rgba(0,0,0,0.03); }
+  #education .section-header { border-bottom-color: #3B1820; }
+  #education .section-header::after { background: #3B1820; }
+
+  /* CONTACT — dark moss */
+  #contact {
+    background: #2C3020;
+    color: #D0D3B0;
+  }
+  #contact h2, #contact .section-num { color: #D0D3B0; }
+  #contact .section-header { border-bottom-color: #D0D3B0; }
+  #contact .section-header::after { background: #D0D3B0; }
+  #contact .contact-cta { color: #D0D3B0; }
+  #contact .contact-cta em { color: #BFC2A0; }
+  #contact .contact-link { color: #9A9C84; border-bottom-color: rgba(208,211,176,0.12); }
+  #contact .contact-link:hover { color: #D0D3B0; }
+  #contact .link-type { color: #7a7c64; }
+  #contact .link-arrow { color: #BFC2A0; }
+  #contact .contact-left { border-right-color: rgba(208,211,176,0.12); }
+  #contact .contact-location { color: #7a7c64; }
+  #contact .contact-city { color: #BFC2A0; }
+  #contact .lang-name { color: #D0D3B0; }
+  #contact .lang-level { color: #7a7c64; }
+
+
+  /* Experience items inside #work */
+  #work .exp-role { color: #1a1208; }
+  #work .exp-company { color: #3B1820; }
+  #work .exp-desc { color: #5a5a48; }
+  #work .exp-period { color: #7a7a60; }
+  #work .exp-item { border-bottom-color: rgba(0,0,0,0.1); }
+  #work .exp-item:hover { background: rgba(0,0,0,0.03); }
+  #work .exp-divider { color: #7a7a60; background: rgba(0,0,0,0.04); border-bottom-color: rgba(0,0,0,0.08); }
+  #work .exp-item::before { background: #3B1820; }
+
+
+  /* Experience block inside #work — burgundy bg */
+  #experience-block {
+    background: #482D33;
+  }
+  #experience-block .section-header {
+    border-bottom-color: #D0D3B0;
+    border-top: 1px solid rgba(208,211,176,0.12);
+  }
+  #experience-block .section-header::after { background: #D0D3B0; }
+  #experience-block h2,
+  #experience-block .section-num { color: #D0D3B0; }
+  #experience-block .exp-role { color: #D0D3B0; }
+  #experience-block .exp-company { color: #e0c8c8; }
+  #experience-block .exp-desc { color: #b09898; }
+  #experience-block .exp-period { color: #9a7878; }
+  #experience-block .exp-item { border-bottom-color: rgba(208,211,176,0.1); }
+  #experience-block .exp-item::before { background: #D0D3B0; }
+  #experience-block .exp-item:hover { background: rgba(208,211,176,0.05); }
+  #experience-block .exp-divider { color: #9a7878; background: rgba(0,0,0,0.08); border-bottom-color: rgba(208,211,176,0.08); }
+
 </style>
 </head>
 <body>
@@ -836,7 +948,7 @@
   <div class="header-top">
     <nav>
       <a href="#about"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>About</a>
-       <a href="#work"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Work</a>
+      <a href="#work"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Work</a>
       <a href="#education"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Education</a>
       <a href="#contact"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:5px;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Contact</a>
     </nav>
@@ -914,7 +1026,8 @@
   <div class="about-grid">
     <div class="about-text reveal-left">
       <p>I bridge the gap between motion art and data-driven performance. Engineering video ads for global mobile hits like <strong>Cooking Fever</strong> and <strong>Airplane Chefs</strong>, focusing on driving measurable growth through rigorous A/B testing and hook optimization.</p>
-      <p>Souldatov — Soul drives the concept. Data proves it works.</p>
+      <p><em>Souldatov</em> — <strong>Soul</strong> drives the concept. <strong>Data</strong> proves it works.</p>
+    
     </div>
     <div class="about-skills reveal">
       <div class="skill-group">
@@ -934,7 +1047,7 @@
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-label">Music & Culture</div>
+        <div class="skill-group-label">Culture</div>
         <div class="skill-tags">
           <span class="tag">Vinyl / Discogs</span>
           <span class="tag">DJ / Music Curation</span>
@@ -944,7 +1057,7 @@
   </div>
 </section>
 
-<!-- Work -->
+<!-- WORK -->
 <section id="work">
   <div class="section-header reveal">
     <span class="section-num">02</span>
@@ -968,14 +1081,8 @@
       </div>
     </div>
   </div>
-<!-- </section> -->
+  <div id="experience-block">
 
-<!-- EXPERIENCE -->
-<!-- <section id="experience"> 
-  <div class="section-header reveal">
-    <span class="section-num">03</span>
-    <h2>Experience</h2>
-  </div>   -->
   <div class="exp-list">
     <div class="exp-item reveal">
       <div class="exp-company">Nordcurrent</div>
@@ -1035,12 +1142,13 @@
       <div class="exp-period">2011 — 2013</div>
     </div>
   </div>
+  </div><!-- /experience-block -->
 </section>
 
 <!-- EDUCATION -->
 <section id="education">
   <div class="section-header reveal">
-    <span class="section-num">03</span>
+    <span class="section-num">04</span>
     <h2>Education</h2>
   </div>
   <div class="exp-list">
@@ -1074,12 +1182,12 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-header reveal">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <h2>Contact</h2>
   </div>
   <div class="contact-inner">
     <div class="contact-left reveal">
-      <div class="contact-cta">Let's build <br>the next <em> winning </em><br>creative </div>
+      <div class="contact-cta">Let's make<br>something<br><em>unforgettable</em></div>
       <div class="contact-links">
         <a class="contact-link" href="mailto:artiom.soldatov@gmail.com">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
