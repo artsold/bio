@@ -930,6 +930,32 @@
   #experience-block .exp-item:hover { background: rgba(208,211,176,0.05); }
   #experience-block .exp-divider { color: #9a7878; background: rgba(0,0,0,0.08); border-bottom-color: rgba(208,211,176,0.08); }
 
+
+  .car-info { padding: 14px 14px 18px; }
+  .car-info-tag {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .car-info-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-primary);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .car-info-desc {
+    font-size: 10px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+  #work .car-info-tag { color: #3B1820; }
+  #work .car-info-label { color: #1a1208; }
+  #work .car-info-desc { color: #5a5a48; }
+
 </style>
 </head>
 <body>
@@ -973,8 +999,8 @@
       <div class="stat-label">Years in creative production </div>
     </div>
     <div class="hero-stat">
-      <div class="stat-num">6+</div>
-      <div class="stat-label">Years at Nordcurrent</div>
+      <div class="stat-num">500M+</div>
+      <div class="stat-label">Downloads on titles I work on</div>
     </div>
     <div class="hero-stat">
       <div class="stat-num">Full cycle</div>
@@ -1020,7 +1046,7 @@
   </div>
   <div class="about-grid">
     <div class="about-text reveal-left">
-      <p>I bridge the gap between motion art and data-driven performance. Engineering video ads for global mobile hits like <strong>Cooking Fever</strong> and <strong>Airplane Chefs</strong>, focusing on driving measurable growth through rigorous A/B testing and hook optimization.</p>
+      <p>Engineering UA creatives for <strong>Cooking Fever</strong> (500M+ downloads, 15M monthly players) and <strong>Airplane Chefs</strong> — Nordcurrent's global hits. Full-cycle ownership from concept to delivery, with performance validated through A/B testing across Tier-1 markets.</p>
       <p><em>Souldatov</em> — <strong>Soul</strong> drives the concept. <strong>Data</strong> proves it works.</p>
     
     </div>
@@ -1083,7 +1109,7 @@
       <div class="exp-company">Nordcurrent</div>
       <div class="exp-body">
         <div class="exp-role">Motion Designer</div>
-        <div class="exp-desc">Full-cycle creative for global hits (Cooking Fever, Airplane Chefs). Concept → copy → high-fidelity video. Performance-led creative strategy via engagement & retention metrics. CPI/ROAS optimization through rigorous A/B testing.</div>
+        <div class="exp-desc">UA creative for Cooking Fever (500M+ downloads, 15M MAU) and Airplane Chefs. Full-cycle ownership: concept → copy → final video. Competitive landscape analysis via Sensor Tower. Hook frameworks and A/B testing across Tier-1 markets (US/UK/DE) to optimize CPI/ROAS.</div>
       </div>
       <div class="exp-period">2019 — Present</div>
     </div>
@@ -1103,40 +1129,7 @@
       </div>
       <div class="exp-period">2009 — Present</div>
     </div>
-    <div class="exp-divider">Past positions</div>
-    <div class="exp-item reveal">
-      <div class="exp-company">Barbora</div>
-      <div class="exp-body">
-        <div class="exp-role">Graphic Designer</div>
-        <div class="exp-desc">High-conversion visual assets and email marketing campaigns for the largest digital retailer in the Baltics.</div>
-      </div>
-      <div class="exp-period">2015 — 2018</div>
     </div>
-    <div class="exp-item reveal">
-      <div class="exp-company">Mokesčių Sufleris</div>
-      <div class="exp-body">
-        <div class="exp-role">Broadcast Engineer & Video Editor</div>
-        <div class="exp-desc">Live broadcast workflows for high-traffic events, ensuring seamless technical execution and post-production quality.</div>
-      </div>
-      <div class="exp-period">2014 — 2018</div>
-    </div>
-    <div class="exp-item reveal">
-      <div class="exp-company">LRT</div>
-      <div class="exp-body">
-        <div class="exp-role">Radio DJ</div>
-        <div class="exp-desc">Produced and hosted weekly show "Tropical Soundclash" on LRT Opus — national public broadcasting.</div>
-      </div>
-      <div class="exp-period">2014 — 2016</div>
-    </div>
-    <div class="exp-item reveal">
-      <div class="exp-company">Barclays</div>
-      <div class="exp-body">
-        <div class="exp-role">IT Support Analyst</div>
-        <div class="exp-desc">Hardware/software diagnostics in high-pressure corporate environment. 24/7 system stability. Strict enterprise security protocols.</div>
-      </div>
-      <div class="exp-period">2011 — 2013</div>
-    </div>
-  </div>
   </div><!-- /experience-block -->
 </section>
 
@@ -1233,14 +1226,14 @@
 
 <script>
 const VIDEOS = [
-  { id: "GN_d3L-CyPk", label: "Airplane Chefs",     tag: "UA Ad" },
-  { id: "A3iu7YE_jVM", label: "Cooking Fever",       tag: "UA Ad" },
-  { id: "QUwZglDG3pQ", label: "Cooking Fever Duels", tag: "UA Ad" },
-  { id: "pAoLSMh7zlQ", label: "Happy Clinic",        tag: "UA Ad" },
-  { id: "jgUprjQJv28", label: "Murder by Choice",    tag: "Hook Test" },
-  { id: "BByox-1JFPk", label: "Murder in the Alps",  tag: "UA Ad" },
-  { id: "wuN-IWKt5Yk", label: "Sniper Arena",        tag: "UA Ad" },
-  { id: "mVP9dEkILPo", label: "War Sector",          tag: "Hero Ad" },
+  { id: "GN_d3L-CyPk", label: "Airplane Chefs",     desc: "New location launch ad for Airplane Chefs — designed to re-engage lapsed players and convert lookalike audiences through destination reveal, gameplay loop, and reward moment." },
+  { id: "A3iu7YE_jVM", label: "Cooking Fever",       desc: "Fail-state hook for Cooking Fever — deliberately engineered to trigger loss aversion and compulsive retry behaviour. One of the most effective creative patterns in casual gaming UA." },
+  { id: "QUwZglDG3pQ", label: "Cooking Fever Duels", desc: "PvP launch ad for Cooking Fever Duels — competitive hook built around character vs character duels, progression loop, and win state close. Designed to attract players who respond to rivalry and instant reward signals." },
+  { id: "pAoLSMh7zlQ", label: "Happy Clinic",        desc: "Two comic patient stories used as a hook — humor-first format designed to drive installs through entertainment, not gameplay demo." },
+  { id: "jgUprjQJv28", label: "Murder by Choice",    desc: "Opens on a crime scene, pulls back to reveal the paradise that hides it. Thriller pacing builds tension before the genre flip lands — targets true crime and horror audiences." },
+  { id: "BByox-1JFPk", label: "Murder in the Alps",  desc: "Horror ad for Murder in the Alps — cozy mystery opening collapses into psychological horror through twin imagery and escalating crime scenes." },
+  { id: "mVP9dEkILPo", label: "Sniper Arena",        desc: "Ad for Sniper Arena — aerial battlefield hook leads into class selection and scope gameplay, closing on a kill shot to sell the power fantasy to competitive shooter audience." },
+  { id: "wuN-IWKt5Yk", label: "War Sector",          desc: "Hero roster ad for War Sector — class reveal format cycles through character stats to trigger identity selection, then cuts to MOBA combat to deliver the power fantasy before closing on a character duo CTA." },
 ];
 
 const filteredVideos = VIDEOS;
@@ -1275,7 +1268,10 @@ function buildCards() {
           style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
         <div style="position:absolute;inset:0;z-index:2;"></div>
       </div>
-      <div class="car-info"><div class="car-info-label">${v.label}</div></div>
+      <div class="car-info">
+        <div class="car-info-label">${v.label}</div>
+        <div class="car-info-desc">${v.desc}</div>
+      </div>
     `;
     card.addEventListener("click", () => openLightbox(v));
     track.appendChild(card);
