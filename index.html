@@ -30,6 +30,22 @@
     --font-display: 'Georgia', 'Times New Roman', serif;   /* headings, big numbers */
     --font-body:    'DM Mono', monospace;                   /* running text */
     --font-mono:    'DM Mono', monospace;                   /* labels, meta, nav */
+    --display-weight:   700;
+    --display-tracking: -0.02em;
+    --hero-size:   clamp(36px, 6.5vw, 92px);
+    --h2-size:     clamp(40px, 6vw, 72px);
+    --h2-weight:   400;
+    --h2-style:    italic;
+    --h2-tracking: -0.03em;
+    --cta-size:    clamp(40px, 6vw, 80px);
+    --em-style:    italic;
+    --city-size:   56px;
+    --body-weight: 300;
+    --body-size:   14px;
+    --body-leading: 1.9;
+    --desc-size:   12px;
+    --card-label-size: 13px;
+    --card-desc-size:  10px;
 
     /* page level (hero, CV button, footer) */
     --page-bg:      #BFC2A0;
@@ -42,8 +58,9 @@
     --accent-ink:   #3B1820;
     --accent-ink-hover: var(--text-2);
     --on-accent:    #F5F5F5;
-    --burgundy:     #482D33;
-    --moss:         #4B5335;
+    --cta:          #482D33;   /* CV button, scroll progress */
+    --cta-hover-text: var(--page-bg);
+    --nav-line:     #4B5335;
     --line:         rgba(107,110,75,0.22);
     --line-strong:  #6B6E4B;
     --grid:         rgba(107,110,75,0.08);
@@ -165,8 +182,8 @@
     color: var(--text);
     overflow-x: hidden;
     font-family: var(--font-body);
-    font-weight: 300;
-    font-size: 14px;
+    font-weight: var(--body-weight);
+    font-size: var(--body-size);
     line-height: 1.7;
   }
 
@@ -234,7 +251,7 @@
     position: absolute;
     bottom: -2px; left: 0;
     width: 100%; height: 1px;
-    background: var(--moss);
+    background: var(--nav-line);
     transform: translateX(-101%);
     transition: transform 0.3s ease;
   }
@@ -284,9 +301,9 @@
 
   .logo-name, .logo-surname {
     font-family: var(--font-display);
-    font-size: clamp(36px, 6.5vw, 92px);
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-size: var(--hero-size);
+    font-weight: var(--display-weight);
+    letter-spacing: var(--display-tracking);
     line-height: 1.0;
     display: block;
   }
@@ -388,7 +405,7 @@
   .stat-num {
     font-family: var(--font-display);
     font-size: 36px;
-    font-weight: 700;
+    font-weight: var(--display-weight);
     color: var(--text-2);
     line-height: 1;
   }
@@ -432,10 +449,10 @@
 
   h2 {
     font-family: var(--font-display);
-    font-size: clamp(40px, 6vw, 72px);
-    font-weight: 400;
-    font-style: italic;
-    letter-spacing: -0.03em;
+    font-size: var(--h2-size);
+    font-weight: var(--h2-weight);
+    font-style: var(--h2-style);
+    letter-spacing: var(--h2-tracking);
     color: var(--h2);
     line-height: 1;
   }
@@ -469,7 +486,7 @@
     padding: 48px;
     border-right: 1px solid var(--hairline);
   }
-  .about-text p { font-size: 14px; line-height: 1.9; color: var(--body); max-width: 480px; }
+  .about-text p { font-size: var(--body-size); line-height: var(--body-leading); color: var(--body); max-width: 480px; }
   .about-text p + p { margin-top: 20px; }
 
   .about-skills { padding: 48px; }
@@ -532,16 +549,16 @@
   .exp-role {
     font-family: var(--font-display);
     font-size: clamp(20px, 2.5vw, 28px);
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-weight: var(--display-weight);
+    letter-spacing: var(--display-tracking);
     color: var(--text);
     margin-bottom: 8px;
     line-height: 1.1;
   }
   .exp-desc {
-    font-size: 12px;
+    font-size: var(--desc-size);
     color: var(--desc);
-    line-height: 1.9;
+    line-height: var(--body-leading);
     max-width: 520px;
     margin-top: 8px;
   }
@@ -750,13 +767,13 @@
   }
   .contact-cta {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(40px, 6vw, 80px);
+    font-weight: var(--display-weight);
+    font-size: var(--cta-size);
     line-height: 0.9;
     color: var(--text);
   }
   .contact-cta em {
-    font-style: italic;
+    font-style: var(--em-style);
     color: var(--em);
   }
   .contact-links {
@@ -796,7 +813,7 @@
   }
   .contact-city {
     font-family: var(--font-display);
-    font-size: 56px;
+    font-size: var(--city-size);
     color: var(--em);
     line-height: 1;
     margin-bottom: 48px;
@@ -814,16 +831,16 @@
     gap: 10px;
     padding: 14px 32px;
     background: transparent;
-    border: 1.5px solid var(--burgundy);
-    color: var(--burgundy);
+    border: 1.5px solid var(--cta);
+    color: var(--cta);
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     transition: background 0.2s, color 0.2s;
   }
   .download-btn:hover {
-    background: var(--burgundy);
-    color: var(--page-bg);
+    background: var(--cta);
+    color: var(--cta-hover-text);
   }
 
   /* ── FOOTER ───────────────────────────────────────────── */
@@ -836,7 +853,7 @@
   .footer-copy { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; }
   .footer-tag {
     font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: var(--display-weight);
     font-size: 12px;
     color: var(--text-2);
     letter-spacing: 0.1em;
@@ -904,7 +921,7 @@
     position: fixed;
     top: 0; left: 0;
     height: 2px;
-    background: var(--burgundy);
+    background: var(--cta);
     z-index: 9997;
     transition: width 0.1s linear;
     width: 0;
@@ -955,14 +972,14 @@
     margin-bottom: 4px;
   }
   .car-info-label {
-    font-size: 13px;
+    font-size: var(--card-label-size);
     font-weight: 400;
     color: var(--text);
     letter-spacing: 0.04em;
     margin-bottom: 8px;
   }
   .car-info-desc {
-    font-size: 10px;
+    font-size: var(--card-desc-size);
     color: var(--muted);
     line-height: 1.6;
     letter-spacing: 0.02em;
