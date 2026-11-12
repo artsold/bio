@@ -82,6 +82,30 @@ V = {
           "--photo-filter-hover":"saturate(1.15) contrast(1.08) brightness(1.08)",
           "--photo-tint":"linear-gradient(200deg, #FFC93C 0%, #2F9BF0 75%)",
           "--photo-blend":"soft-light","--photo-tint-opacity":"0.9"}),
+ "D": dict(  # HOT: user palette — flame/orange/gold/ember/cherry + deep navy
+   fonts="family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Lilita+One&family=Nunito:wght@500;700;800",
+   display="'Lilita One', 'Nunito', sans-serif", dweight="400", dtrack="0.01em", h2w="400",
+   dshadow="0 0.07em 0 #1A1A2E", btnshadow="0 5px 0 #1A1A2E", cardshadow="0 8px 0 #1A1A2E",
+   page="flame", pagebg="linear-gradient(180deg, #FF4B12 0%, #FF6B35 100%)",
+   themes=[
+    dict(name="flame",  bg="#FF4B12", fg="#1A1A2E", fg2="#1A1A2E", muted="#1A1A2E", accent="#FFD700", ink="#1A1A2E", on="#1A1A2E",
+         **{"--h2":"#FFFFFF","--em":"#FFD700","--rule":"#1A1A2E","--card-bg":"rgba(255,255,255,0.18)"}),
+    dict(name="gold",   bg="#FFD700", fg="#1A1A2E", fg2="#1A1A2E", muted="#2A2A44", accent="#FF4B12", ink="#1A1A2E", on="#1A1A2E",
+         **{"--h2":"#FFFFFF","--rule":"#FF4B12","--row-mark":"#FF2D55","--tag-bg":"rgba(26,26,46,0.10)"}),
+    dict(name="navy",   bg="#1A1A2E", fg="#FFFFFF", fg2="#ECECF4", muted="#BDBDD0", accent="#FF6B35", ink="#FFD700", on="#1A1A2E",
+         **{"--h2":"#FFFFFF","--rule":"#FF6B35","--card-bg":"rgba(255,255,255,0.06)","--card-shadow":"0 8px 0 #FF4B12"}),
+    dict(name="orange", bg="#FF8C00", fg="#1A1A2E", fg2="#1A1A2E", muted="#1A1A2E", accent="#FF2D55", ink="#1A1A2E", on="#1A1A2E",
+         **{"--h2":"#FFFFFF","--rule":"#1A1A2E","--row-mark":"#FF2D55"}),
+    dict(name="cherry", bg="#FF2D55", fg="#1A1A2E", fg2="#1A1A2E", muted="#1A1A2E", accent="#FFD700", ink="#1A1A2E", on="#1A1A2E",
+         **{"--h2":"#FFFFFF","--em":"#FFD700","--rule":"#1A1A2E"}),
+   ],
+   map={"about":"gold","work":"navy","experience-block":"orange","education":"gold","contact":"cherry"},
+   extra={"--label-scale":"1.3","--text-scale":"1.3",
+          "--title":"#FFFFFF","--display-stroke":"0.12em","--display-stroke-color":"#1A1A2E","--display-case":"uppercase",
+          "--photo-filter":"saturate(1.1) contrast(1.06)",
+          "--photo-filter-hover":"saturate(1.2) contrast(1.08) brightness(1.04)",
+          "--photo-tint":"#FF4B12",
+          "--photo-blend":"overlay","--photo-tint-opacity":"0.55"}),
 }[v]
 
 def setvar(k,val):
