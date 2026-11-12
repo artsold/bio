@@ -426,7 +426,7 @@
     line-height: 1.0;
     display: block;
   }
-  .logo-name { color: var(--text); }
+  .logo-name { color: var(--title, var(--text)); }
   .logo-surname { color: var(--accent); }
 
   .hero-logo::after {
@@ -525,7 +525,7 @@
     font-family: var(--font-display);
     font-size: calc(36px * var(--text-scale, 1));
     font-weight: var(--display-weight);
-    color: var(--text-2);
+    color: var(--title, var(--text-2));
     line-height: 1;
   }
   .stat-num.counted { animation: countPulse 0.4s ease; }
@@ -889,7 +889,7 @@
     font-weight: var(--display-weight);
     font-size: var(--cta-size);
     line-height: 0.9;
-    color: var(--text);
+    color: var(--title, var(--text));
   }
   .contact-cta em {
     font-style: var(--em-style);
