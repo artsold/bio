@@ -46,6 +46,15 @@
     --desc-size:   12px;
     --card-label-size: 13px;
     --card-desc-size:  10px;
+    --display-shadow:  none;        /* chunky game-title shadow on big headings */
+
+    /* shape & surface */
+    --radius-pill:  0;              /* tags, dots */
+    --radius-btn:   0;              /* buttons, arrows */
+    --radius-card:  0;              /* work cards, lightbox */
+    --btn-shadow:   none;           /* flat 'pressable' edge */
+    --card-shadow:  none;
+    --noise-opacity: 0.4;
 
     /* page level (hero, CV button, footer) */
     --page-bg:      #BFC2A0;
@@ -197,7 +206,7 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 1000;
-    opacity: 0.4;
+    opacity: var(--noise-opacity);
   }
 
   /* ── HEADER ──────────────────────────────────────────── */
@@ -985,6 +994,13 @@
     letter-spacing: 0.02em;
   }
 
+
+  /* ── SHAPE (token-driven) ─────────────────────────────── */
+  .tag, .car-dot { border-radius: var(--radius-pill); }
+  .car-arrow, .download-btn { border-radius: var(--radius-btn); box-shadow: var(--btn-shadow); }
+  .car-card, .lb-inner, #lbFrame { border-radius: var(--radius-card); }
+  .car-card { box-shadow: var(--card-shadow); }
+  .logo-name, .logo-surname, h2, .contact-cta { text-shadow: var(--display-shadow); }
 </style>
 </head>
 <body>
