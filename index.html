@@ -16,7 +16,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
   /* ════════════════════════════════════════════════════════════
      DESIGN TOKENS
@@ -27,149 +27,259 @@
      ════════════════════════════════════════════════════════════ */
   :root {
     /* typography */
-    --font-display: 'Georgia', 'Times New Roman', serif;   /* headings, big numbers */
-    --font-body:    'DM Mono', monospace;                   /* running text */
+    --font-display: 'Fredoka', 'Nunito', sans-serif;   /* headings, big numbers */
+    --font-body:    'Nunito', sans-serif;                   /* running text */
     --font-mono:    'DM Mono', monospace;                   /* labels, meta, nav */
     --display-weight:   700;
-    --display-tracking: -0.02em;
-    --hero-size:   clamp(36px, 6.5vw, 92px);
-    --h2-size:     clamp(40px, 6vw, 72px);
-    --h2-weight:   400;
-    --h2-style:    italic;
-    --h2-tracking: -0.03em;
-    --cta-size:    clamp(40px, 6vw, 80px);
-    --em-style:    italic;
-    --city-size:   56px;
-    --body-weight: 300;
-    --body-size:   14px;
-    --body-leading: 1.9;
-    --desc-size:   12px;
-    --card-label-size: 13px;
-    --card-desc-size:  10px;
-    --display-shadow:  none;        /* chunky game-title shadow on big headings */
+    --display-tracking: -0.01em;
+    --hero-size:   clamp(60px, 9.5vw, 140px);
+    --h2-size:     clamp(46px, 6.4vw, 84px);
+    --h2-weight:   700;
+    --h2-style:    normal;
+    --h2-tracking: -0.01em;
+    --cta-size:    clamp(38px, 7vw, 100px);
+    --em-style:    normal;
+    --city-size:   clamp(44px, 5vw, 64px);
+    --body-weight: 600;
+    --body-size:   19px;
+    --body-leading: 1.6;
+    --desc-size:   17px;
+    --card-label-size: 19px;
+    --card-desc-size:  15px;
+    --display-shadow:  0 4px 0 rgba(40,10,80,0.28);        /* chunky game-title shadow on big headings */
+
+    /* variant extras */
+    --label-scale: 1.3;
+    --text-scale: 1.3;
+    --photo-filter: saturate(0.85) contrast(1.08) brightness(1.04);
+    --photo-filter-hover: saturate(1) contrast(1.1) brightness(1.06);
+    --photo-tint: #6A35E0;
+    --photo-blend: soft-light;
+    --photo-tint-opacity: 1;
 
     /* shape & surface */
-    --radius-pill:  0;              /* tags, dots */
-    --radius-btn:   0;              /* buttons, arrows */
-    --radius-card:  0;              /* work cards, lightbox */
-    --btn-shadow:   none;           /* flat 'pressable' edge */
-    --card-shadow:  none;
-    --noise-opacity: 0.4;
+    --radius-pill:  999px;              /* tags, dots */
+    --radius-btn:   16px;              /* buttons, arrows */
+    --radius-card:  22px;              /* work cards, lightbox */
+    --btn-shadow:   0 5px 0 #D9A400;           /* flat 'pressable' edge */
+    --card-shadow:  0 8px 0 rgba(40,10,80,0.20);
+    --noise-opacity: 0;
 
     /* page level (hero, CV button, footer) */
-    --page-bg:      #BFC2A0;
-    --bg-gradient:  linear-gradient(160deg, #BFC2A0 0%, #D0D3B0 100%);
-    --text:         #1a1208;
-    --text-2:       #2C3020;
-    --muted:        #5a5a48;
-    --subtle:       #5a5a48;
-    --accent:       #3B1820;
-    --accent-ink:   #3B1820;
-    --accent-ink-hover: var(--text-2);
-    --on-accent:    #F5F5F5;
-    --cta:          #482D33;   /* CV button, scroll progress */
-    --cta-hover-text: var(--page-bg);
-    --nav-line:     #4B5335;
-    --line:         rgba(107,110,75,0.22);
-    --line-strong:  #6B6E4B;
-    --grid:         rgba(107,110,75,0.08);
-    --photo-border: rgba(0,0,0,0.15);
-    --accent-ring:  rgba(46,26,30,0.35);
-    --media-bg:     #1a1a0f;
-    --overlay:      rgba(26,18,8,0.92);
+    --page-bg:      #6A35E0;
+    --bg-gradient:  #6A35E0;
+    --text:         #FFFFFF;
+    --text-2:       #FFFFFF;
+    --muted:        #E9E0FF;
+    --subtle:       #E9E0FF;
+    --accent:       #FFD23F;
+    --accent-ink:   #FFE680;
+    --accent-ink-hover: #FFFFFF;
+    --on-accent:    #2A1660;
+    --cta:          #FFD23F;   /* CV button, scroll progress */
+    --cta-hover-text: #2A1660;
+    --nav-line:     #FFD23F;
+    --line:         rgba(255,255,255,0.18);
+    --line-strong:  rgba(255,255,255,0.4);
+    --grid:         transparent;
+    --photo-border: #FFFFFF;
+    --accent-ring:  #FFD23F;
+    --media-bg:     #0B1230;
+    --overlay:      rgba(10,14,40,0.92);
 
     /* component roles (defaults; themes override) */
-    --h2:           var(--muted);
-    --num:          var(--text-2);
-    --rule:         var(--accent);
-    --hairline:     var(--line);
-    --body:         var(--text);
-    --text-3:       var(--muted);
-    --text-3-hover: var(--text-2);
-    --em:           var(--accent);
-    --desc:         var(--text-2);
-    --row-line:     var(--line);
-    --row-mark:     var(--accent);
-    --row-hover:    rgba(44,62,80,0.1);
-    --div-bg:       rgba(0,0,0,0.04);
-    --div-line:     var(--line);
-    --ctl-border:   var(--line);
-    --card-border:  var(--line);
-    --card-border-hover: var(--accent);
-    --dot:          rgba(0,0,0,0.18);
-    --dot-hover:    rgba(0,0,0,0.4);
-    --tag-border:   rgba(0,0,0,0.18);
-    --tag-text:     var(--muted);
-    --tag-bg:       rgba(255,255,255,0.18);
-    --tag-border-h: var(--text-2);
-    --tag-text-h:   var(--text);
-    --tag-bg-h:     rgba(44,62,80,0.35);
+    --h2:           #FFFFFF;
+    --num:          #FFE680;
+    --rule:         #FFD23F;
+    --hairline:     rgba(255,255,255,0.15);
+    --body:         #FFFFFF;
+    --text-3:       #FFFFFF;
+    --text-3-hover: #FFFFFF;
+    --em:           #FFE680;
+    --desc:         #FFFFFF;
+    --row-line:     rgba(255,255,255,0.12);
+    --row-mark:     #FFD23F;
+    --row-hover:    rgba(255,255,255,0.06);
+    --div-bg:       rgba(255,255,255,0.06);
+    --div-line:     rgba(255,255,255,0.1);
+    --ctl-border:   transparent;
+    --card-border:  transparent;
+    --card-border-hover: #FFD23F;
+    --dot:          rgba(255,255,255,0.3);
+    --dot-hover:    rgba(255,255,255,0.6);
+    --tag-border:   transparent;
+    --tag-text:     #FFFFFF;
+    --tag-bg:       rgba(255,255,255,0.1);
+    --tag-border-h: #FFD23F;
+    --tag-text-h:   #FFFFFF;
+    --tag-bg-h:     rgba(255,210,63,0.25);
   }
 
   /* ── THEMES ── applied via data-theme="..." on a section/block */
   [data-theme] { background: var(--bg); color: var(--inherit-color, var(--text)); }
 
-  [data-theme="moss"] {
-    --bg:           #2C3020;
-    --text:         #D0D3B0;
-    --h2:           #D0D3B0;
-    --num:          #D0D3B0;
-    --rule:         #D0D3B0;
-    --hairline:     rgba(208,211,176,0.12);
-    --body:         #b0b398;
-    --text-3:       #9A9C84;
-    --text-3-hover: #D0D3B0;
-    --subtle:       #7a7c64;
-    --em:           #BFC2A0;
-    --tag-border:   rgba(208,211,176,0.25);
-    --tag-text:     #b0b398;
-    --tag-bg:       rgba(208,211,176,0.06);
-    --tag-border-h: #D0D3B0;
-    --tag-text-h:   #D0D3B0;
-    --tag-bg-h:     rgba(208,211,176,0.12);
+  [data-theme="grape"] {
+    --bg: #6A35E0;
+    --text: #FFFFFF;
+    --text-2: #FFFFFF;
+    --muted: #E9E0FF;
+    --subtle: #E9E0FF;
+    --accent: #FFD23F;
+    --accent-ink: #FFE680;
+    --accent-ink-hover: #FFFFFF;
+    --on-accent: #2A1660;
+    --line: rgba(255,255,255,0.18);
+    --h2: #FFFFFF;
+    --num: #FFE680;
+    --rule: #FFD23F;
+    --hairline: rgba(255,255,255,0.15);
+    --body: #FFFFFF;
+    --text-3: #FFFFFF;
+    --text-3-hover: #FFFFFF;
+    --em: #FFE680;
+    --desc: #FFFFFF;
+    --row-line: rgba(255,255,255,0.12);
+    --row-mark: #FFD23F;
+    --row-hover: rgba(255,255,255,0.06);
+    --div-bg: rgba(255,255,255,0.06);
+    --div-line: rgba(255,255,255,0.1);
+    --ctl-border: transparent;
+    --card-border: transparent;
+    --card-border-hover: #FFD23F;
+    --dot: rgba(255,255,255,0.3);
+    --dot-hover: rgba(255,255,255,0.6);
+    --tag-border: transparent;
+    --tag-text: #FFFFFF;
+    --tag-bg: rgba(255,255,255,0.1);
+    --card-bg: rgba(255,255,255,0.14);
+    --ctl-bg: #FFD23F;
+    --ctl-text: #2A1660;
+    --tag-border-h: #FFD23F;
+    --tag-text-h: #FFFFFF;
+    --tag-bg-h: rgba(255,210,63,0.25);
   }
 
-  [data-theme="sage"] {
-    --bg:           #C8CBAA;
-    --text:         #1a1208;
-    --h2:           #5a5a48;
-    --num:          #5a5a48;
-    --rule:         #3B1820;
-    --accent-ink:   #3B1820;
-    --desc:         #5a5a48;
-    --subtle:       #7a7a60;
-    --on-accent:    #C8CBAA;
-    --row-line:     rgba(0,0,0,0.1);
-    --row-mark:     #3B1820;
-    --row-hover:    rgba(0,0,0,0.03);
-    --div-bg:       rgba(0,0,0,0.04);
-    --div-line:     rgba(0,0,0,0.08);
-    --ctl-border:   rgba(0,0,0,0.18);
-    --card-border:  rgba(0,0,0,0.12);
-    --dot:          rgba(0,0,0,0.15);
-    /* LEGACY: hover effects were inert before refactor; kept as-is, revisit in redesign */
-    --accent-ink-hover: #3B1820;
-    --dot-hover:    rgba(0,0,0,0.15);
-    --card-border-hover: rgba(0,0,0,0.12);
+  [data-theme="cream"] {
+    --bg: #FFF3E6;
+    --text: #2A1660;
+    --text-2: #4A3A80;
+    --muted: #625596;
+    --subtle: #625596;
+    --accent: #FF4D8D;
+    --accent-ink: #B0186A;
+    --accent-ink-hover: #2A1660;
+    --on-accent: #2A1660;
+    --line: rgba(42,22,96,0.18);
+    --h2: #2A1660;
+    --num: #B0186A;
+    --rule: #FF4D8D;
+    --hairline: rgba(42,22,96,0.15);
+    --body: #4A3A80;
+    --text-3: #4A3A80;
+    --text-3-hover: #2A1660;
+    --em: #B0186A;
+    --desc: #4A3A80;
+    --row-line: rgba(42,22,96,0.12);
+    --row-mark: #FF4D8D;
+    --row-hover: rgba(42,22,96,0.06);
+    --div-bg: rgba(42,22,96,0.06);
+    --div-line: rgba(42,22,96,0.1);
+    --ctl-border: transparent;
+    --card-border: transparent;
+    --card-border-hover: #FF4D8D;
+    --dot: rgba(42,22,96,0.3);
+    --dot-hover: rgba(42,22,96,0.6);
+    --tag-border: transparent;
+    --tag-text: #2A1660;
+    --tag-bg: rgba(42,22,96,0.1);
+    --card-bg: rgba(255,255,255,0.14);
+    --ctl-bg: #FF4D8D;
+    --ctl-text: #2A1660;
+    --tag-border-h: #FF4D8D;
+    --tag-text-h: #2A1660;
+    --tag-bg-h: rgba(255,77,141,0.25);
   }
 
-  [data-theme="wine"] {
-    --bg:           #482D33;
-    --text:         #D0D3B0;
-    --h2:           #D0D3B0;
-    --num:          #D0D3B0;
-    --rule:         #D0D3B0;
-    --hairline:     rgba(208,211,176,0.12);
-    --accent-ink:   #e0c8c8;
-    --desc:         #b09898;
-    --subtle:       #9a7878;
-    --row-line:     rgba(208,211,176,0.1);
-    --row-mark:     #D0D3B0;
-    --row-hover:    rgba(208,211,176,0.05);
-    --div-bg:       rgba(0,0,0,0.08);
-    --div-line:     rgba(208,211,176,0.08);
-    --accent-ink-hover: #e0c8c8;  /* LEGACY: inert hover */
-    --inherit-color: #1a1208;     /* LEGACY: block never set its own color */
+  [data-theme="mint"] {
+    --bg: #14B8A6;
+    --text: #0B2433;
+    --text-2: #0F2F40;
+    --muted: #123848;
+    --subtle: #123848;
+    --accent: #FFD23F;
+    --accent-ink: #5A0F3C;
+    --accent-ink-hover: #0B2433;
+    --on-accent: #2A1660;
+    --line: rgba(11,36,51,0.18);
+    --h2: #0B2433;
+    --num: #5A0F3C;
+    --rule: #FFD23F;
+    --hairline: rgba(11,36,51,0.15);
+    --body: #0F2F40;
+    --text-3: #0F2F40;
+    --text-3-hover: #0B2433;
+    --em: #5A0F3C;
+    --desc: #0F2F40;
+    --row-line: rgba(11,36,51,0.12);
+    --row-mark: #FFD23F;
+    --row-hover: rgba(11,36,51,0.06);
+    --div-bg: rgba(11,36,51,0.06);
+    --div-line: rgba(11,36,51,0.1);
+    --ctl-border: transparent;
+    --card-border: transparent;
+    --card-border-hover: #FFD23F;
+    --dot: rgba(11,36,51,0.3);
+    --dot-hover: rgba(11,36,51,0.6);
+    --tag-border: transparent;
+    --tag-text: #0B2433;
+    --tag-bg: rgba(11,36,51,0.1);
+    --card-bg: rgba(255,255,255,0.14);
+    --ctl-bg: #FFD23F;
+    --ctl-text: #2A1660;
+    --tag-border-h: #FFD23F;
+    --tag-text-h: #0B2433;
+    --tag-bg-h: rgba(255,210,63,0.25);
+  }
+
+  [data-theme="berry"] {
+    --bg: #BE1B57;
+    --text: #FFFFFF;
+    --text-2: #FFFFFF;
+    --muted: #FFE8EF;
+    --subtle: #FFE8EF;
+    --accent: #FFD23F;
+    --accent-ink: #FFE680;
+    --accent-ink-hover: #FFFFFF;
+    --on-accent: #2A1660;
+    --line: rgba(255,255,255,0.18);
+    --h2: #FFFFFF;
+    --num: #FFE680;
+    --rule: #FFD23F;
+    --hairline: rgba(255,255,255,0.15);
+    --body: #FFFFFF;
+    --text-3: #FFFFFF;
+    --text-3-hover: #FFFFFF;
+    --em: #FFE680;
+    --desc: #FFFFFF;
+    --row-line: rgba(255,255,255,0.12);
+    --row-mark: #FFD23F;
+    --row-hover: rgba(255,255,255,0.06);
+    --div-bg: rgba(255,255,255,0.06);
+    --div-line: rgba(255,255,255,0.1);
+    --ctl-border: transparent;
+    --card-border: transparent;
+    --card-border-hover: #FFD23F;
+    --dot: rgba(255,255,255,0.3);
+    --dot-hover: rgba(255,255,255,0.6);
+    --tag-border: transparent;
+    --tag-text: #FFFFFF;
+    --tag-bg: rgba(255,255,255,0.1);
+    --card-bg: rgba(255,255,255,0.14);
+    --ctl-bg: #FFD23F;
+    --ctl-text: #2A1660;
+    --tag-border-h: #FFD23F;
+    --tag-text-h: #FFFFFF;
+    --tag-bg-h: rgba(255,210,63,0.25);
   }
 
   /* labels & meta always use the mono face */
@@ -1012,6 +1122,9 @@
   .car-card { box-shadow: var(--card-shadow); background: var(--card-bg, transparent); }
   .car-arrow { background: var(--ctl-bg, transparent); color: var(--ctl-text, var(--text)); }
   .logo-name, .logo-surname, h2, .contact-cta { text-shadow: var(--display-shadow); }
+  @media (max-width: 768px) { :root { --text-scale: 1.1; --label-scale: 1.15; } }
+  .download-btn { background: var(--cta); color: var(--cta-hover-text); border-color: var(--cta); font-weight: 700; }
+  .download-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0,0,0,0.25); }
 </style>
 </head>
 <body>
@@ -1095,7 +1208,7 @@
 </div>
 
 <!-- ABOUT -->
-<section id="about" data-theme="moss">
+<section id="about" data-theme="cream">
   <div class="section-header reveal">
     <span class="section-num">01</span>
     <h2>About</h2>
@@ -1135,7 +1248,7 @@
 </section>
 
 <!-- WORK -->
-<section id="work" data-theme="sage">
+<section id="work" data-theme="mint">
   <div class="section-header reveal">
     <span class="section-num">02</span>
     <h2>Work</h2>
@@ -1158,7 +1271,7 @@
       </div>
     </div>
   </div>
-  <div id="experience-block" data-theme="wine">
+  <div id="experience-block" data-theme="berry">
 
   <div class="exp-list">
     <div class="exp-item reveal">
@@ -1190,7 +1303,7 @@
 </section>
 
 <!-- EDUCATION -->
-<section id="education" data-theme="sage">
+<section id="education" data-theme="cream">
   <div class="section-header reveal">
     <span class="section-num">03</span>
     <h2>Education</h2>
@@ -1224,7 +1337,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" data-theme="moss">
+<section id="contact" data-theme="grape">
   <div class="section-header reveal">
     <span class="section-num">04</span>
     <h2>Contact</h2>
