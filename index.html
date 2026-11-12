@@ -1122,6 +1122,11 @@
   .car-card { box-shadow: var(--card-shadow); background: var(--card-bg, transparent); }
   .car-arrow { background: var(--ctl-bg, transparent); color: var(--ctl-text, var(--text)); }
   .logo-name, .logo-surname, h2, .contact-cta { text-shadow: var(--display-shadow); }
+  .logo-name, .logo-surname, h2, .contact-cta, .contact-city, .stat-num {
+    -webkit-text-stroke: var(--display-stroke, 0) var(--display-stroke-color, transparent);
+    paint-order: stroke fill;
+  }
+  .logo-name, .logo-surname, h2 { text-transform: var(--display-case, none); }
   @media (max-width: 768px) { :root { --text-scale: 1.1; --label-scale: 1.15; } }
   .download-btn { background: var(--cta); color: var(--cta-hover-text); border-color: var(--cta); font-weight: 700; }
   .download-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0,0,0,0.25); }
