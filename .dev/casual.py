@@ -15,7 +15,8 @@ def roles(t):
         bgc = ac if name=='on/accent' else bg
         k=cr(c,bgc)
         if k<need: print(f"  WARN {v}:{t['name']} {name} {c} on {bgc} = {k:.2f}")
-    return {
+    over={k:x for k,x in t.items() if k.startswith('--')}
+    return {**{
      '--bg':bg,'--text':fg,'--text-2':fg2,'--muted':mu,'--subtle':mu,
      '--accent':ac,'--accent-ink':ink,'--accent-ink-hover':fg,'--on-accent':on,
      '--line':rgba(fg,0.18),'--h2':fg,'--num':ink,'--rule':ac,'--hairline':rgba(fg,0.15),
@@ -27,7 +28,7 @@ def roles(t):
      '--tag-border':'transparent','--tag-text':fg,'--tag-bg':rgba(fg,0.10),
      '--card-bg':'rgba(255,255,255,0.14)','--ctl-bg':ac,'--ctl-text':on,
      '--tag-border-h':ac,'--tag-text-h':fg,'--tag-bg-h':rgba(ac,0.25),
-    }
+    }, **over}
 
 V = {
  "A": dict(  # ROYAL: sky blue + gold, Lilita One
@@ -59,6 +60,28 @@ V = {
           "--photo-filter-hover":"saturate(1) contrast(1.1) brightness(1.06)",
           "--photo-tint":"#6A35E0",
           "--photo-blend":"soft-light","--photo-tint-opacity":"1"}),
+ "C": dict(  # PAPER 2: sky + sun + orange, Lilita One with navy outline
+   fonts="family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Lilita+One&family=Nunito:wght@500;700;800",
+   display="'Lilita One', 'Nunito', sans-serif", dweight="400", dtrack="0.01em", h2w="400",
+   dshadow="0 0.07em 0 #102A63", btnshadow="0 5px 0 #102A63", cardshadow="0 8px 0 #102A63",
+   page="sky", pagebg="linear-gradient(180deg, #1F86EA 0%, #5CC0F7 100%)",
+   themes=[
+    dict(name="sky",   bg="#2F9BF0", fg="#0E2556", fg2="#0E2556", muted="#0E2556", accent="#FFB81C", ink="#0E2556", on="#0E2556",
+         **{"--h2":"#FFFFFF","--em":"#FFC93C","--rule":"#102A63","--card-bg":"rgba(255,255,255,0.22)"}),
+    dict(name="cream", bg="#FFF4DC", fg="#0E2556", fg2="#24386B", muted="#40527F", accent="#FF9F1C", ink="#B23A08", on="#0E2556",
+         **{"--h2":"#FFFFFF","--rule":"#FF9F1C"}),
+    dict(name="deep",  bg="#1C5FD6", fg="#FFFFFF", fg2="#FFFFFF", muted="#E3EEFF", accent="#FFC93C", ink="#FFE38A", on="#0E2556",
+         **{"--h2":"#FFFFFF","--rule":"#FFC93C","--card-bg":"rgba(255,255,255,0.14)"}),
+    dict(name="sun",   bg="#FFC21E", fg="#0E2556", fg2="#0E2556", muted="#1F3566", accent="#FF5FC8", ink="#7A1A00", on="#0E2556",
+         **{"--h2":"#FFFFFF","--rule":"#102A63"}),
+   ],
+   map={"about":"cream","work":"deep","experience-block":"sun","education":"cream","contact":"sky"},
+   extra={"--label-scale":"1.3","--text-scale":"1.3",
+          "--title":"#FFFFFF","--display-stroke":"0.12em","--display-stroke-color":"#102A63","--display-case":"uppercase",
+          "--photo-filter":"saturate(1.05) contrast(1.06) brightness(1.05)",
+          "--photo-filter-hover":"saturate(1.15) contrast(1.08) brightness(1.08)",
+          "--photo-tint":"linear-gradient(200deg, #FFC93C 0%, #2F9BF0 75%)",
+          "--photo-blend":"soft-light","--photo-tint-opacity":"0.9"}),
 }[v]
 
 def setvar(k,val):
@@ -82,7 +105,7 @@ pg=T[V['page']]; R=roles(pg)
 for k,val in R.items():
     if k in ('--bg','--card-bg','--ctl-bg','--ctl-text'): continue
     setvar(k,val)
-for k,val in {"--page-bg":pg['bg'],"--bg-gradient":pg['bg'],"--cta":pg['accent'],"--cta-hover-text":pg['on'],
+for k,val in {"--page-bg":pg['bg'],"--bg-gradient":V.get('pagebg',pg['bg']),"--cta":pg['accent'],"--cta-hover-text":pg['on'],
     "--nav-line":pg['accent'],"--line-strong":rgba(pg['fg'],0.4),"--grid":"transparent","--photo-border":pg['fg'],
     "--accent-ring":pg['accent'],"--media-bg":"#0B1230","--overlay":"rgba(10,14,40,0.92)"}.items(): setvar(k,val)
 
