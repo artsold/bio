@@ -16,7 +16,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Lilita+One&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
   /* ════════════════════════════════════════════════════════════
      DESIGN TOKENS
@@ -27,16 +27,16 @@
      ════════════════════════════════════════════════════════════ */
   :root {
     /* typography */
-    --font-display: 'Fredoka', 'Nunito', sans-serif;   /* headings, big numbers */
+    --font-display: 'Lilita One', 'Nunito', sans-serif;   /* headings, big numbers */
     --font-body:    'Nunito', sans-serif;                   /* running text */
     --font-mono:    'DM Mono', monospace;                   /* labels, meta, nav */
-    --display-weight:   700;
-    --display-tracking: -0.01em;
+    --display-weight:   400;
+    --display-tracking: 0.01em;
     --hero-size:   clamp(60px, 9.5vw, 140px);
     --h2-size:     clamp(46px, 6.4vw, 84px);
-    --h2-weight:   700;
+    --h2-weight:   400;
     --h2-style:    normal;
-    --h2-tracking: -0.01em;
+    --h2-tracking: 0.01em;
     --cta-size:    clamp(38px, 7vw, 100px);
     --em-style:    normal;
     --city-size:   clamp(44px, 5vw, 64px);
@@ -46,240 +46,286 @@
     --desc-size:   17px;
     --card-label-size: 19px;
     --card-desc-size:  15px;
-    --display-shadow:  0 4px 0 rgba(40,10,80,0.28);        /* chunky game-title shadow on big headings */
+    --display-shadow:  0 0.07em 0 #1A1A2E;        /* chunky game-title shadow on big headings */
 
     /* variant extras */
     --label-scale: 1.3;
     --text-scale: 1.3;
-    --photo-filter: saturate(0.85) contrast(1.08) brightness(1.04);
-    --photo-filter-hover: saturate(1) contrast(1.1) brightness(1.06);
-    --photo-tint: #6A35E0;
-    --photo-blend: soft-light;
-    --photo-tint-opacity: 1;
+    --title: #FFFFFF;
+    --display-stroke: 0.12em;
+    --display-stroke-color: #1A1A2E;
+    --display-case: uppercase;
+    --photo-filter: saturate(1.1) contrast(1.08);
+    --photo-filter-hover: saturate(1.2) contrast(1.1) brightness(1.04);
+    --photo-tint: #FF4B12;
+    --photo-blend: color;
+    --photo-tint-opacity: 0.4;
 
     /* shape & surface */
     --radius-pill:  999px;              /* tags, dots */
     --radius-btn:   16px;              /* buttons, arrows */
     --radius-card:  22px;              /* work cards, lightbox */
-    --btn-shadow:   0 5px 0 #D9A400;           /* flat 'pressable' edge */
-    --card-shadow:  0 8px 0 rgba(40,10,80,0.20);
+    --btn-shadow:   0 5px 0 #1A1A2E;           /* flat 'pressable' edge */
+    --card-shadow:  0 8px 0 #1A1A2E;
     --noise-opacity: 0;
 
     /* page level (hero, CV button, footer) */
-    --page-bg:      #6A35E0;
-    --bg-gradient:  #6A35E0;
-    --text:         #FFFFFF;
-    --text-2:       #FFFFFF;
-    --muted:        #E9E0FF;
-    --subtle:       #E9E0FF;
-    --accent:       #FFD23F;
-    --accent-ink:   #FFE680;
-    --accent-ink-hover: #FFFFFF;
-    --on-accent:    #2A1660;
-    --cta:          #FFD23F;   /* CV button, scroll progress */
-    --cta-hover-text: #2A1660;
-    --nav-line:     #FFD23F;
-    --line:         rgba(255,255,255,0.18);
-    --line-strong:  rgba(255,255,255,0.4);
+    --page-bg:      #FF4B12;
+    --bg-gradient:  linear-gradient(180deg, #FF4B12 0%, #FF6B35 100%);
+    --text:         #1A1A2E;
+    --text-2:       #1A1A2E;
+    --muted:        #1A1A2E;
+    --subtle:       #1A1A2E;
+    --accent:       #FFD700;
+    --accent-ink:   #1A1A2E;
+    --accent-ink-hover: #1A1A2E;
+    --on-accent:    #1A1A2E;
+    --cta:          #FFD700;   /* CV button, scroll progress */
+    --cta-hover-text: #1A1A2E;
+    --nav-line:     #FFD700;
+    --line:         rgba(26,26,46,0.18);
+    --line-strong:  rgba(26,26,46,0.4);
     --grid:         transparent;
-    --photo-border: #FFFFFF;
-    --accent-ring:  #FFD23F;
+    --photo-border: #1A1A2E;
+    --accent-ring:  #FFD700;
     --media-bg:     #0B1230;
     --overlay:      rgba(10,14,40,0.92);
 
     /* component roles (defaults; themes override) */
     --h2:           #FFFFFF;
-    --num:          #FFE680;
-    --rule:         #FFD23F;
-    --hairline:     rgba(255,255,255,0.15);
-    --body:         #FFFFFF;
-    --text-3:       #FFFFFF;
-    --text-3-hover: #FFFFFF;
-    --em:           #FFE680;
-    --desc:         #FFFFFF;
-    --row-line:     rgba(255,255,255,0.12);
-    --row-mark:     #FFD23F;
-    --row-hover:    rgba(255,255,255,0.06);
-    --div-bg:       rgba(255,255,255,0.06);
-    --div-line:     rgba(255,255,255,0.1);
+    --num:          #1A1A2E;
+    --rule:         #1A1A2E;
+    --hairline:     rgba(26,26,46,0.15);
+    --body:         #1A1A2E;
+    --text-3:       #1A1A2E;
+    --text-3-hover: #1A1A2E;
+    --em:           #FFD700;
+    --desc:         #1A1A2E;
+    --row-line:     rgba(26,26,46,0.12);
+    --row-mark:     #FFD700;
+    --row-hover:    rgba(26,26,46,0.06);
+    --div-bg:       rgba(26,26,46,0.06);
+    --div-line:     rgba(26,26,46,0.1);
     --ctl-border:   transparent;
     --card-border:  transparent;
-    --card-border-hover: #FFD23F;
-    --dot:          rgba(255,255,255,0.3);
-    --dot-hover:    rgba(255,255,255,0.6);
+    --card-border-hover: #FFD700;
+    --dot:          rgba(26,26,46,0.3);
+    --dot-hover:    rgba(26,26,46,0.6);
     --tag-border:   transparent;
-    --tag-text:     #FFFFFF;
-    --tag-bg:       rgba(255,255,255,0.1);
-    --tag-border-h: #FFD23F;
-    --tag-text-h:   #FFFFFF;
-    --tag-bg-h:     rgba(255,210,63,0.25);
+    --tag-text:     #1A1A2E;
+    --tag-bg:       rgba(26,26,46,0.1);
+    --tag-border-h: #FFD700;
+    --tag-text-h:   #1A1A2E;
+    --tag-bg-h:     rgba(255,215,0,0.25);
   }
 
   /* ── THEMES ── applied via data-theme="..." on a section/block */
   [data-theme] { background: var(--bg); color: var(--inherit-color, var(--text)); }
 
-  [data-theme="grape"] {
-    --bg: #6A35E0;
+  [data-theme="flame"] {
+    --bg: #FF4B12;
+    --text: #1A1A2E;
+    --text-2: #1A1A2E;
+    --muted: #1A1A2E;
+    --subtle: #1A1A2E;
+    --accent: #FFD700;
+    --accent-ink: #1A1A2E;
+    --accent-ink-hover: #1A1A2E;
+    --on-accent: #1A1A2E;
+    --line: rgba(26,26,46,0.18);
+    --h2: #FFFFFF;
+    --num: #1A1A2E;
+    --rule: #1A1A2E;
+    --hairline: rgba(26,26,46,0.15);
+    --body: #1A1A2E;
+    --text-3: #1A1A2E;
+    --text-3-hover: #1A1A2E;
+    --em: #FFD700;
+    --desc: #1A1A2E;
+    --row-line: rgba(26,26,46,0.12);
+    --row-mark: #FFD700;
+    --row-hover: rgba(26,26,46,0.06);
+    --div-bg: rgba(26,26,46,0.06);
+    --div-line: rgba(26,26,46,0.1);
+    --ctl-border: transparent;
+    --card-border: transparent;
+    --card-border-hover: #FFD700;
+    --dot: rgba(26,26,46,0.3);
+    --dot-hover: rgba(26,26,46,0.6);
+    --tag-border: transparent;
+    --tag-text: #1A1A2E;
+    --tag-bg: rgba(26,26,46,0.1);
+    --card-bg: rgba(255,255,255,0.18);
+    --ctl-bg: #FFD700;
+    --ctl-text: #1A1A2E;
+    --tag-border-h: #FFD700;
+    --tag-text-h: #1A1A2E;
+    --tag-bg-h: rgba(255,215,0,0.25);
+  }
+
+  [data-theme="gold"] {
+    --bg: #FFD700;
+    --text: #1A1A2E;
+    --text-2: #1A1A2E;
+    --muted: #2A2A44;
+    --subtle: #2A2A44;
+    --accent: #FF4B12;
+    --accent-ink: #1A1A2E;
+    --accent-ink-hover: #1A1A2E;
+    --on-accent: #1A1A2E;
+    --line: rgba(26,26,46,0.18);
+    --h2: #FFFFFF;
+    --num: #1A1A2E;
+    --rule: #FF4B12;
+    --hairline: rgba(26,26,46,0.15);
+    --body: #1A1A2E;
+    --text-3: #1A1A2E;
+    --text-3-hover: #1A1A2E;
+    --em: #1A1A2E;
+    --desc: #1A1A2E;
+    --row-line: rgba(26,26,46,0.12);
+    --row-mark: #FF2D55;
+    --row-hover: rgba(26,26,46,0.06);
+    --div-bg: rgba(26,26,46,0.06);
+    --div-line: rgba(26,26,46,0.1);
+    --ctl-border: transparent;
+    --card-border: transparent;
+    --card-border-hover: #FF4B12;
+    --dot: rgba(26,26,46,0.3);
+    --dot-hover: rgba(26,26,46,0.6);
+    --tag-border: transparent;
+    --tag-text: #1A1A2E;
+    --tag-bg: rgba(26,26,46,0.10);
+    --card-bg: rgba(255,255,255,0.14);
+    --ctl-bg: #FF4B12;
+    --ctl-text: #1A1A2E;
+    --tag-border-h: #FF4B12;
+    --tag-text-h: #1A1A2E;
+    --tag-bg-h: rgba(255,75,18,0.25);
+  }
+
+  [data-theme="navy"] {
+    --bg: #1A1A2E;
     --text: #FFFFFF;
-    --text-2: #FFFFFF;
-    --muted: #E9E0FF;
-    --subtle: #E9E0FF;
-    --accent: #FFD23F;
-    --accent-ink: #FFE680;
+    --text-2: #ECECF4;
+    --muted: #BDBDD0;
+    --subtle: #BDBDD0;
+    --accent: #FF6B35;
+    --accent-ink: #FFD700;
     --accent-ink-hover: #FFFFFF;
-    --on-accent: #2A1660;
+    --on-accent: #1A1A2E;
     --line: rgba(255,255,255,0.18);
     --h2: #FFFFFF;
-    --num: #FFE680;
-    --rule: #FFD23F;
+    --num: #FFD700;
+    --rule: #FF6B35;
     --hairline: rgba(255,255,255,0.15);
-    --body: #FFFFFF;
-    --text-3: #FFFFFF;
+    --body: #ECECF4;
+    --text-3: #ECECF4;
     --text-3-hover: #FFFFFF;
-    --em: #FFE680;
-    --desc: #FFFFFF;
+    --em: #FFD700;
+    --desc: #ECECF4;
     --row-line: rgba(255,255,255,0.12);
-    --row-mark: #FFD23F;
+    --row-mark: #FF6B35;
     --row-hover: rgba(255,255,255,0.06);
     --div-bg: rgba(255,255,255,0.06);
     --div-line: rgba(255,255,255,0.1);
     --ctl-border: transparent;
     --card-border: transparent;
-    --card-border-hover: #FFD23F;
+    --card-border-hover: #FF6B35;
     --dot: rgba(255,255,255,0.3);
     --dot-hover: rgba(255,255,255,0.6);
     --tag-border: transparent;
     --tag-text: #FFFFFF;
     --tag-bg: rgba(255,255,255,0.1);
-    --card-bg: rgba(255,255,255,0.14);
-    --ctl-bg: #FFD23F;
-    --ctl-text: #2A1660;
-    --tag-border-h: #FFD23F;
+    --card-bg: rgba(255,255,255,0.06);
+    --ctl-bg: #FF6B35;
+    --ctl-text: #1A1A2E;
+    --tag-border-h: #FF6B35;
     --tag-text-h: #FFFFFF;
-    --tag-bg-h: rgba(255,210,63,0.25);
+    --tag-bg-h: rgba(255,107,53,0.25);
+    --card-shadow: 0 8px 0 #FF4B12;
   }
 
-  [data-theme="cream"] {
-    --bg: #FFF3E6;
-    --text: #2A1660;
-    --text-2: #4A3A80;
-    --muted: #625596;
-    --subtle: #625596;
-    --accent: #FF4D8D;
-    --accent-ink: #B0186A;
-    --accent-ink-hover: #2A1660;
-    --on-accent: #2A1660;
-    --line: rgba(42,22,96,0.18);
-    --h2: #2A1660;
-    --num: #B0186A;
-    --rule: #FF4D8D;
-    --hairline: rgba(42,22,96,0.15);
-    --body: #4A3A80;
-    --text-3: #4A3A80;
-    --text-3-hover: #2A1660;
-    --em: #B0186A;
-    --desc: #4A3A80;
-    --row-line: rgba(42,22,96,0.12);
-    --row-mark: #FF4D8D;
-    --row-hover: rgba(42,22,96,0.06);
-    --div-bg: rgba(42,22,96,0.06);
-    --div-line: rgba(42,22,96,0.1);
-    --ctl-border: transparent;
-    --card-border: transparent;
-    --card-border-hover: #FF4D8D;
-    --dot: rgba(42,22,96,0.3);
-    --dot-hover: rgba(42,22,96,0.6);
-    --tag-border: transparent;
-    --tag-text: #2A1660;
-    --tag-bg: rgba(42,22,96,0.1);
-    --card-bg: rgba(255,255,255,0.14);
-    --ctl-bg: #FF4D8D;
-    --ctl-text: #2A1660;
-    --tag-border-h: #FF4D8D;
-    --tag-text-h: #2A1660;
-    --tag-bg-h: rgba(255,77,141,0.25);
-  }
-
-  [data-theme="mint"] {
-    --bg: #14B8A6;
-    --text: #0B2433;
-    --text-2: #0F2F40;
-    --muted: #123848;
-    --subtle: #123848;
-    --accent: #FFD23F;
-    --accent-ink: #5A0F3C;
-    --accent-ink-hover: #0B2433;
-    --on-accent: #2A1660;
-    --line: rgba(11,36,51,0.18);
-    --h2: #0B2433;
-    --num: #5A0F3C;
-    --rule: #FFD23F;
-    --hairline: rgba(11,36,51,0.15);
-    --body: #0F2F40;
-    --text-3: #0F2F40;
-    --text-3-hover: #0B2433;
-    --em: #5A0F3C;
-    --desc: #0F2F40;
-    --row-line: rgba(11,36,51,0.12);
-    --row-mark: #FFD23F;
-    --row-hover: rgba(11,36,51,0.06);
-    --div-bg: rgba(11,36,51,0.06);
-    --div-line: rgba(11,36,51,0.1);
-    --ctl-border: transparent;
-    --card-border: transparent;
-    --card-border-hover: #FFD23F;
-    --dot: rgba(11,36,51,0.3);
-    --dot-hover: rgba(11,36,51,0.6);
-    --tag-border: transparent;
-    --tag-text: #0B2433;
-    --tag-bg: rgba(11,36,51,0.1);
-    --card-bg: rgba(255,255,255,0.14);
-    --ctl-bg: #FFD23F;
-    --ctl-text: #2A1660;
-    --tag-border-h: #FFD23F;
-    --tag-text-h: #0B2433;
-    --tag-bg-h: rgba(255,210,63,0.25);
-  }
-
-  [data-theme="berry"] {
-    --bg: #BE1B57;
-    --text: #FFFFFF;
-    --text-2: #FFFFFF;
-    --muted: #FFE8EF;
-    --subtle: #FFE8EF;
-    --accent: #FFD23F;
-    --accent-ink: #FFE680;
-    --accent-ink-hover: #FFFFFF;
-    --on-accent: #2A1660;
-    --line: rgba(255,255,255,0.18);
+  [data-theme="orange"] {
+    --bg: #FF8C00;
+    --text: #1A1A2E;
+    --text-2: #1A1A2E;
+    --muted: #1A1A2E;
+    --subtle: #1A1A2E;
+    --accent: #FF2D55;
+    --accent-ink: #1A1A2E;
+    --accent-ink-hover: #1A1A2E;
+    --on-accent: #1A1A2E;
+    --line: rgba(26,26,46,0.18);
     --h2: #FFFFFF;
-    --num: #FFE680;
-    --rule: #FFD23F;
-    --hairline: rgba(255,255,255,0.15);
-    --body: #FFFFFF;
-    --text-3: #FFFFFF;
-    --text-3-hover: #FFFFFF;
-    --em: #FFE680;
-    --desc: #FFFFFF;
-    --row-line: rgba(255,255,255,0.12);
-    --row-mark: #FFD23F;
-    --row-hover: rgba(255,255,255,0.06);
-    --div-bg: rgba(255,255,255,0.06);
-    --div-line: rgba(255,255,255,0.1);
+    --num: #1A1A2E;
+    --rule: #1A1A2E;
+    --hairline: rgba(26,26,46,0.15);
+    --body: #1A1A2E;
+    --text-3: #1A1A2E;
+    --text-3-hover: #1A1A2E;
+    --em: #1A1A2E;
+    --desc: #1A1A2E;
+    --row-line: rgba(26,26,46,0.12);
+    --row-mark: #FF2D55;
+    --row-hover: rgba(26,26,46,0.06);
+    --div-bg: rgba(26,26,46,0.06);
+    --div-line: rgba(26,26,46,0.1);
     --ctl-border: transparent;
     --card-border: transparent;
-    --card-border-hover: #FFD23F;
-    --dot: rgba(255,255,255,0.3);
-    --dot-hover: rgba(255,255,255,0.6);
+    --card-border-hover: #FF2D55;
+    --dot: rgba(26,26,46,0.3);
+    --dot-hover: rgba(26,26,46,0.6);
     --tag-border: transparent;
-    --tag-text: #FFFFFF;
-    --tag-bg: rgba(255,255,255,0.1);
+    --tag-text: #1A1A2E;
+    --tag-bg: rgba(26,26,46,0.1);
     --card-bg: rgba(255,255,255,0.14);
-    --ctl-bg: #FFD23F;
-    --ctl-text: #2A1660;
-    --tag-border-h: #FFD23F;
-    --tag-text-h: #FFFFFF;
-    --tag-bg-h: rgba(255,210,63,0.25);
+    --ctl-bg: #FF2D55;
+    --ctl-text: #1A1A2E;
+    --tag-border-h: #FF2D55;
+    --tag-text-h: #1A1A2E;
+    --tag-bg-h: rgba(255,45,85,0.25);
+  }
+
+  [data-theme="cherry"] {
+    --bg: #FF2D55;
+    --text: #1A1A2E;
+    --text-2: #1A1A2E;
+    --muted: #1A1A2E;
+    --subtle: #1A1A2E;
+    --accent: #FFD700;
+    --accent-ink: #1A1A2E;
+    --accent-ink-hover: #1A1A2E;
+    --on-accent: #1A1A2E;
+    --line: rgba(26,26,46,0.18);
+    --h2: #FFFFFF;
+    --num: #1A1A2E;
+    --rule: #1A1A2E;
+    --hairline: rgba(26,26,46,0.15);
+    --body: #1A1A2E;
+    --text-3: #1A1A2E;
+    --text-3-hover: #1A1A2E;
+    --em: #FFD700;
+    --desc: #1A1A2E;
+    --row-line: rgba(26,26,46,0.12);
+    --row-mark: #FFD700;
+    --row-hover: rgba(26,26,46,0.06);
+    --div-bg: rgba(26,26,46,0.06);
+    --div-line: rgba(26,26,46,0.1);
+    --ctl-border: transparent;
+    --card-border: transparent;
+    --card-border-hover: #FFD700;
+    --dot: rgba(26,26,46,0.3);
+    --dot-hover: rgba(26,26,46,0.6);
+    --tag-border: transparent;
+    --tag-text: #1A1A2E;
+    --tag-bg: rgba(26,26,46,0.1);
+    --card-bg: rgba(255,255,255,0.14);
+    --ctl-bg: #FFD700;
+    --ctl-text: #1A1A2E;
+    --tag-border-h: #FFD700;
+    --tag-text-h: #1A1A2E;
+    --tag-bg-h: rgba(255,215,0,0.25);
   }
 
   /* labels & meta always use the mono face */
@@ -1213,7 +1259,7 @@
 </div>
 
 <!-- ABOUT -->
-<section id="about" data-theme="cream">
+<section id="about" data-theme="gold">
   <div class="section-header reveal">
     <span class="section-num">01</span>
     <h2>About</h2>
@@ -1253,7 +1299,7 @@
 </section>
 
 <!-- WORK -->
-<section id="work" data-theme="mint">
+<section id="work" data-theme="navy">
   <div class="section-header reveal">
     <span class="section-num">02</span>
     <h2>Work</h2>
@@ -1276,7 +1322,7 @@
       </div>
     </div>
   </div>
-  <div id="experience-block" data-theme="berry">
+  <div id="experience-block" data-theme="orange">
 
   <div class="exp-list">
     <div class="exp-item reveal">
@@ -1308,7 +1354,7 @@
 </section>
 
 <!-- EDUCATION -->
-<section id="education" data-theme="cream">
+<section id="education" data-theme="gold">
   <div class="section-header reveal">
     <span class="section-num">03</span>
     <h2>Education</h2>
@@ -1342,7 +1388,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" data-theme="grape">
+<section id="contact" data-theme="cherry">
   <div class="section-header reveal">
     <span class="section-num">04</span>
     <h2>Contact</h2>
