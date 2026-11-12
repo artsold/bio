@@ -238,7 +238,7 @@
   }
 
   .logo-mark {
-    font-size: 12px;
+    font-size: calc(12px * var(--label-scale, 1));
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--muted);
@@ -246,7 +246,7 @@
 
   nav { display: flex; gap: 32px; }
   nav a {
-    font-size: 12px;
+    font-size: calc(12px * var(--label-scale, 1));
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
@@ -290,7 +290,7 @@
   }
 
   .hero-eyebrow {
-    font-size: 12px;
+    font-size: calc(12px * var(--label-scale, 1));
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--text-2);
@@ -350,14 +350,14 @@
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 50%;
-    filter: grayscale(20%) contrast(1.05);
+    filter: var(--photo-filter, grayscale(20%) contrast(1.05));
     transition: filter 0.4s ease, transform 0.4s ease;
     position: relative;
     z-index: 2;
     border: 2px solid var(--photo-border);
   }
   .hero-photo:hover {
-    filter: grayscale(0%) contrast(1.08);
+    filter: var(--photo-filter-hover, grayscale(0%) contrast(1.08));
     transform: scale(1.03);
   }
 
@@ -413,14 +413,14 @@
 
   .stat-num {
     font-family: var(--font-display);
-    font-size: 36px;
+    font-size: calc(36px * var(--text-scale, 1));
     font-weight: var(--display-weight);
     color: var(--text-2);
     line-height: 1;
   }
   .stat-num.counted { animation: countPulse 0.4s ease; }
   .stat-label {
-    font-size: 10px;
+    font-size: calc(10px * var(--label-scale, 1));
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
@@ -451,7 +451,7 @@
   .section-header.visible::after { width: 100%; }
 
   .section-num {
-    font-size: 10px;
+    font-size: calc(10px * var(--label-scale, 1));
     color: var(--num);
     letter-spacing: 0.2em;
   }
@@ -482,7 +482,7 @@
   .marquee-track:hover { animation-play-state: paused; }
   .marquee-item {
     font-family: var(--font-display);
-    font-size: 12px;
+    font-size: calc(12px * var(--label-scale, 1));
     letter-spacing: 0.25em;
     color: var(--text-2);
     padding: 0 32px;
@@ -501,7 +501,7 @@
   .about-skills { padding: 48px; }
   .skill-group { margin-bottom: 32px; }
   .skill-group-label {
-    font-size: 10px;
+    font-size: calc(10px * var(--label-scale, 1));
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--text-3);
@@ -509,7 +509,7 @@
   }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .tag {
-    font-size: 12px;
+    font-size: calc(12px * var(--label-scale, 1));
     letter-spacing: 0.1em;
     padding: 5px 12px;
     border: 1px solid var(--tag-border);
@@ -548,7 +548,7 @@
   .exp-item:hover .exp-company { color: var(--accent-ink-hover); }
 
   .exp-company {
-    font-size: 10px;
+    font-size: calc(10px * var(--label-scale, 1));
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--accent-ink);
@@ -572,7 +572,7 @@
     margin-top: 8px;
   }
   .exp-period {
-    font-size: 10px;
+    font-size: calc(10px * var(--label-scale, 1));
     color: var(--subtle);
     text-align: right;
     letter-spacing: 0.15em;
@@ -581,7 +581,7 @@
   }
   .exp-divider {
     padding: 10px 48px;
-    font-size: 10px;
+    font-size: calc(10px * var(--label-scale, 1));
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--subtle);
@@ -752,14 +752,14 @@
   }
   .lb-meta { display: flex; gap: 12px; align-items: center; }
   .lb-tag {
-    font-size: 10px;
+    font-size: calc(10px * var(--label-scale, 1));
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent-ink);
     border: 1px solid var(--accent-ink);
     padding: 3px 8px;
   }
-  .lb-label { font-size: 12px; color: var(--text); letter-spacing: 0.08em; }
+  .lb-label { font-size: calc(12px * var(--text-scale, 1)); color: var(--text); letter-spacing: 0.08em; }
 
   /* ── CONTACT ──────────────────────────────────────────── */
   .contact-inner {
@@ -796,7 +796,7 @@
     align-items: center;
     gap: 16px;
     color: var(--text-3);
-    font-size: 12px;
+    font-size: calc(12px * var(--text-scale, 1));
     letter-spacing: 0.1em;
     padding: 14px 0;
     border-bottom: 1px solid var(--hairline);
@@ -805,7 +805,7 @@
   .contact-link:hover { color: var(--text-3-hover); }
   .contact-link:hover .link-arrow { transform: translateX(4px); }
   .link-arrow { margin-left: auto; transition: transform 0.2s; color: var(--em); }
-  .link-type { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--subtle); min-width:48px; }
+  .link-type { font-size: calc(10px * var(--label-scale, 1)); letter-spacing:.2em; text-transform:uppercase; color:var(--subtle); min-width:48px; }
 
   .contact-right {
     padding: 64px 48px;
@@ -814,7 +814,7 @@
     justify-content: flex-end;
   }
   .contact-location {
-    font-size: 12px;
+    font-size: calc(12px * var(--label-scale, 1));
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--subtle);
@@ -829,8 +829,8 @@
   }
   .contact-langs { display: flex; gap: 32px; }
   .lang-item { display: flex; flex-direction: column; gap: 3px; }
-  .lang-name { font-size: 13px; color: var(--text); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; }
-  .lang-level { font-size: 10px; color: var(--subtle); letter-spacing: 0.08em; }
+  .lang-name { font-size: calc(13px * var(--text-scale, 1)); color: var(--text); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; }
+  .lang-level { font-size: calc(10px * var(--label-scale, 1)); color: var(--subtle); letter-spacing: 0.08em; }
 
   /* ── DOWNLOAD CV BUTTON ───────────────────────────────── */
   .download-wrap { text-align: center; padding: 40px 0 20px; }
@@ -842,7 +842,7 @@
     background: transparent;
     border: 1.5px solid var(--cta);
     color: var(--cta);
-    font-size: 11px;
+    font-size: calc(11px * var(--label-scale, 1));
     letter-spacing: 0.12em;
     text-transform: uppercase;
     transition: background 0.2s, color 0.2s;
@@ -859,11 +859,11 @@
     justify-content: space-between;
     align-items: center;
   }
-  .footer-copy { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; }
+  .footer-copy { font-size: calc(10px * var(--label-scale, 1)); color: var(--muted); letter-spacing: 0.15em; }
   .footer-tag {
     font-family: var(--font-display);
     font-weight: var(--display-weight);
-    font-size: 12px;
+    font-size: calc(12px * var(--text-scale, 1));
     color: var(--text-2);
     letter-spacing: 0.1em;
   }
@@ -941,7 +941,7 @@
   @media (max-width: 768px) {
     .header-top { padding: 16px 20px; flex-wrap: wrap; gap: 12px; }
     nav { gap: 10px; flex-wrap: wrap; }
-    nav a { font-size: 10px; letter-spacing: 0.12em; }
+    nav a { font-size: calc(10px * var(--label-scale, 1)); letter-spacing: 0.12em; }
     .hero-body { padding: 24px 24px 0; }
     .hero-content { grid-template-columns: 1fr; }
     .hero-photo-col { justify-content: flex-start; margin-top: 24px; }
@@ -974,7 +974,7 @@
 
   .car-info { padding: 14px 14px 18px; }
   .car-info-tag {
-    font-size: 9px;
+    font-size: calc(9px * var(--label-scale, 1));
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent-ink);
@@ -999,6 +999,16 @@
   .tag, .car-dot { border-radius: var(--radius-pill); }
   .car-arrow, .download-btn { border-radius: var(--radius-btn); box-shadow: var(--btn-shadow); }
   .car-card, .lb-inner, #lbFrame { border-radius: var(--radius-card); }
+  /* photo grading: tint layer blended over the portrait (off by default) */
+  .hero-photo-wrap::after {
+    content: ''; position: absolute; inset: 0; border-radius: 50%;
+    background: var(--photo-tint, transparent);
+    mix-blend-mode: var(--photo-blend, normal);
+    opacity: var(--photo-tint-opacity, 0);
+    pointer-events: none; z-index: 3;
+    transition: transform 0.4s ease;
+  }
+  .hero-photo-wrap:hover::after { transform: scale(1.03); }
   .car-card { box-shadow: var(--card-shadow); background: var(--card-bg, transparent); }
   .car-arrow { background: var(--ctl-bg, transparent); color: var(--ctl-text, var(--text)); }
   .logo-name, .logo-surname, h2, .contact-cta { text-shadow: var(--display-shadow); }
