@@ -105,7 +105,7 @@ V = {
           "--photo-filter":"saturate(1.1) contrast(1.08)",
           "--photo-filter-hover":"saturate(1.2) contrast(1.1) brightness(1.04)",
           "--photo-tint":"#FF4B12",
-          "--photo-blend":"color","--photo-tint-opacity":"0.4"}),
+          "--photo-blend":"color","--photo-tint-opacity":"0.3"}),
 }[v]
 
 def setvar(k,val):
