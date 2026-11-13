@@ -102,10 +102,7 @@ V = {
    map={"about":"gold","work":"navy","experience-block":"orange","education":"gold","contact":"cherry"},
    extra={"--label-scale":"1.3","--text-scale":"1.3",
           "--title":"#FFFFFF","--display-stroke":"0.12em","--display-stroke-color":"#1A1A2E","--display-case":"uppercase",
-          "--photo-filter":"saturate(1.1) contrast(1.08)",
-          "--photo-filter-hover":"saturate(1.2) contrast(1.1) brightness(1.04)",
-          "--photo-tint":"#FF4B12",
-          "--photo-blend":"color","--photo-tint-opacity":"0.3"}),
+          }),  # photo: no grading (original look)
 }[v]
 
 def setvar(k,val):
