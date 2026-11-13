@@ -12,8 +12,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Artiom Soldatov — Motion Designer & AI Creative Producer</title>
-<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAIACAAAAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAEdJREFUeJxj3H9owX8GCgATJZqHiQEs+CRrwhrg7JZVDVjV4HQBsmZsfLwG4FKMTXzgAxGrAbgCDJs4ThegK8ZlKONoXmAAAJRwFWH1z/DkAAAAAElFTkSuQmCC">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+<meta name="description" content="Motion Designer & AI Creative Producer. Video ads built on AI pipelines — UA creatives for Cooking Fever & Airplane Chefs. Open to UA Creative / Motion roles, remote.">
+<meta name="theme-color" content="#FF4B12">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://souldatov.com/">
+<meta property="og:title" content="Artiom Soldatov — Motion Designer & AI Creative Producer">
+<meta property="og:description" content="Video ads built on AI pipelines. Proven in paid rotation. Open to UA Creative / Motion roles, remote.">
+<meta property="og:image" content="https://souldatov.com/og-image.png?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://souldatov.com/og-image.png?v=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Lilita+One&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
@@ -55,6 +67,9 @@
     --display-stroke: 0.12em;
     --display-stroke-color: #1A1A2E;
     --display-case: uppercase;
+    --status-bg: #1A1A2E;
+    --status-text: #FFFFFF;
+    --status-dot: #FFD700;
     --photo-filter: none;
     --photo-filter-hover: none;
 
@@ -442,6 +457,17 @@
     justify-content: flex-end;
   }
 
+  .hero-status {
+    display: inline-flex; align-items: center; gap: 10px; width: fit-content; align-self: flex-start; max-width: 100%;
+    font-family: var(--font-mono); font-size: calc(11px * var(--label-scale, 1));
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 8px 16px 8px 12px; margin-bottom: 18px;
+    border-radius: var(--radius-pill);
+    background: var(--status-bg, var(--text)); color: var(--status-text, var(--page-bg));
+    box-shadow: var(--btn-shadow);
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-status .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--status-dot, var(--accent)); box-shadow: 0 0 0 3px rgba(255,255,255,0.15); }
   .hero-eyebrow {
     font-size: calc(12px * var(--label-scale, 1));
     letter-spacing: 0.3em;
@@ -1202,6 +1228,7 @@
   <div class="hero-body">
     <div class="hero-content">
       <div class="hero-text-col">
+        <div class="hero-status"><span class="dot"></span>Open to UA Creative / Motion roles · Remote</div>
         <div class="hero-eyebrow">Video ads built on AI pipelines. Proven in paid rotation.</div>
         <div class="hero-logo">
           <span class="logo-name">Artiom</span>
@@ -1224,7 +1251,7 @@
     </div>
     <div class="hero-stat">
       <div class="stat-num">500M+</div>
-      <div class="stat-label">Downloads on titles I work on</div>
+      <div class="stat-label">Downloads on titles I worked on</div>
     </div>
     <div class="hero-stat">
       <div class="stat-num">Full cycle</div>
@@ -1247,7 +1274,7 @@
     <span class="marquee-item"><span>—</span>CPI/ROAS</span>
     <span class="marquee-item"><span>—</span>Cooking Fever</span>
     <span class="marquee-item"><span>—</span>Airplane Chefs</span>
-    <span class="marquee-item"><span>—</span>6 Years Nordcurrent</span>
+    <span class="marquee-item"><span>—</span>7 Years Nordcurrent</span>
     <span class="marquee-item"><span>—</span>13+ Years Experience</span>
     <span class="marquee-item"><span>—</span>Vilnius LT</span>
     <span class="marquee-item"><span>—</span>Motion Design</span>
@@ -1261,7 +1288,7 @@
     <span class="marquee-item"><span>—</span>CPI/ROAS</span>
     <span class="marquee-item"><span>—</span>Cooking Fever</span>
     <span class="marquee-item"><span>—</span>Airplane Chefs</span>
-    <span class="marquee-item"><span>—</span>6 Years Nordcurrent</span>
+    <span class="marquee-item"><span>—</span>7 Years Nordcurrent</span>
     <span class="marquee-item"><span>—</span>13+ Years Experience</span>
     <span class="marquee-item"><span>—</span>Vilnius LT</span>
     <span class="marquee-item"><span>—</span>Motion Design</span>
@@ -1276,7 +1303,7 @@
   </div>
   <div class="about-grid">
     <div class="about-text reveal-left">
-      <p>Engineering UA creatives for <strong>Cooking Fever</strong> (500M+ downloads, 15M monthly players) and <strong>Airplane Chefs</strong> — Nordcurrent's global hits. Full-cycle ownership from concept to delivery, with performance validated through A/B testing across Tier-1 markets.</p>
+      <p>Engineered UA creatives for <strong>Cooking Fever</strong> (500M+ downloads, 15M monthly players) and <strong>Airplane Chefs</strong> — Nordcurrent's global hits. Full-cycle ownership from concept to delivery, with performance validated through A/B testing across Tier-1 markets.</p>
       <p>I build AI production pipelines: scripts and storyboards with LLMs, assets in Seedream / Flux Kontext, animation in Kling / Seedance, final polish in After Effects — so more concepts reach testing, faster.</p>
     
     </div>
@@ -1347,7 +1374,7 @@
       <div class="exp-company">Nordcurrent</div>
       <div class="exp-body">
         <div class="exp-role">Motion Designer</div>
-        <div class="exp-desc">UA creative for Cooking Fever (500M+ downloads, 15M MAU) and Airplane Chefs. Full-cycle ownership: concept → copy → final video. Competitive landscape analysis via Sensor Tower. Hook frameworks and A/B testing across Tier-1 markets (US/UK/DE) to optimize CPI/ROAS. Built AI production pipelines: scripts with Claude, assets in Seedream / Flux Kontext, animation in Kling / Seedance; automated After Effects scripting and video adaptations.</div>
+        <div class="exp-desc">Produced UA creatives for Cooking Fever (500M+ downloads, 15M MAU) and Airplane Chefs. Owned the full cycle: concept → copy → final video. Ran competitive landscape analysis via Sensor Tower. Developed hook frameworks and A/B tests across Tier-1 markets (US/UK/DE) to optimize CPI/ROAS. Built AI production pipelines: scripts with Claude, assets in Seedream / Flux Kontext, animation in Kling / Seedance; automated After Effects scripting and video adaptations.</div>
       </div>
       <div class="exp-period">2019 — 2026</div>
     </div>
@@ -1451,7 +1478,7 @@
 
 <!-- DOWNLOAD CV -->
 <div class="download-wrap">
-  <a href="CV_ArtiomSoldatov.pdf?v=20261113" download="CV_ArtiomSoldatov.pdf" class="download-btn">
+  <a href="CV_ArtiomSoldatov.pdf?v=20261113b" download="CV_ArtiomSoldatov.pdf" class="download-btn">
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     Download CV
   </a>
