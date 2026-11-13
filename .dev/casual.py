@@ -142,6 +142,6 @@ for sec,th in V['map'].items():
     s,n=re.subn(rf'(id="{sec}" data-theme=")[^"]+"',rf'\g<1>{th}"',s); assert n==1,sec
 s=re.sub(r"https://fonts.googleapis.com/css2\?[^\"]*?&display=swap",f"https://fonts.googleapis.com/css2?{V['fonts']}&display=swap",s,count=1)
 # flat casual extras: filled CV button
-s=s.replace("</style>","  @media (max-width: 768px) { :root { --text-scale: 1.1; --label-scale: 1.15; } }\n</style>",1)
+s=s.replace("</style>","  @media (max-width: 768px) { :root { --text-scale: 1.1; --label-scale: 1.15; } }\n  @media (max-width: 480px) { :root { --hero-size: clamp(40px, 15vw, 60px); --cta-size: clamp(32px, 11vw, 48px); --h2-size: clamp(34px, 11vw, 46px); --city-size: 40px; } }\n</style>",1)
 s=s.replace("</style>","  .download-btn { background: var(--cta); color: var(--cta-hover-text); border-color: var(--cta); font-weight: 700; }\n  .download-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0,0,0,0.25); }\n</style>",1)
 open(out,'w').write(s); print("ok",v)
