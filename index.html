@@ -904,6 +904,13 @@
     background: #000;  /* video letterbox, theme-independent */
   }
   .lb-meta { display: flex; gap: 12px; align-items: center; }
+  .car-badge {
+    position: absolute; top: 10px; left: 10px; z-index: 3;
+    font-family: var(--font-display); font-size: 16px; letter-spacing: 0.04em; line-height: 1;
+    padding: 6px 10px 5px; border-radius: var(--radius-btn);
+    background: var(--accent); color: var(--on-accent);
+    box-shadow: var(--btn-shadow); pointer-events: none;
+  }
   .lb-tag {
     font-size: calc(10px * var(--label-scale, 1));
     letter-spacing: 0.2em;
@@ -1457,6 +1464,8 @@
 
 <script>
 const VIDEOS = [
+  { id: "XdeWSCT_XkA", label: "Cooking Fever", ai: true, tag: "AI-generated",
+    desc: "Appetite is the hook. Under the lights of the amusement park, one perfect hot dog turns a crowd into customers — and a food truck into an empire. Fully AI-generated, from script to final frame." },
   { id: "GN_d3L-CyPk", label: "Airplane Chefs",     desc: "New location launch ad for Airplane Chefs — designed to re-engage lapsed players and convert lookalike audiences through destination reveal, gameplay loop, and reward moment." },
   { id: "A3iu7YE_jVM", label: "Cooking Fever",       desc: "Fail-state hook for Cooking Fever — deliberately engineered to trigger loss aversion and compulsive retry behaviour. One of the most effective creative patterns in casual gaming UA." },
   { id: "QUwZglDG3pQ", label: "Cooking Fever Duels", desc: "PvP launch ad for Cooking Fever Duels — competitive hook built around character vs character duels, progression loop, and win state close. Designed to attract players who respond to rivalry and instant reward signals." },
@@ -1494,6 +1503,7 @@ function buildCards() {
     card.className = "car-card";
     card.innerHTML = `
       <div class="car-thumb">
+        ${v.ai ? '<span class="car-badge">AI</span>' : ''}
         <iframe src="${embedUrl(v.id)}" frameborder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
