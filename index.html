@@ -1206,6 +1206,8 @@
     paint-order: stroke fill;
   }
   .logo-name, .logo-surname, h2 { text-transform: var(--display-case, none); }
+  /* outward half of the outline + shadow must not be cut by .hero-content{overflow:hidden} */
+  .logo-name, .logo-surname { padding-left: calc(var(--display-stroke, 0em) / 2); }
   @media (max-width: 768px) { :root { --text-scale: 1.1; --label-scale: 1.15; } }
   @media (max-width: 480px) { :root { --hero-size: clamp(40px, 15vw, 60px); --cta-size: clamp(32px, 11vw, 48px); --h2-size: clamp(34px, 11vw, 46px); --city-size: 40px; } }
   .download-btn { background: var(--cta); color: var(--cta-hover-text); border-color: var(--cta); font-weight: 700; }
