@@ -1670,7 +1670,9 @@ window.addEventListener('load', () => document.querySelector('header').classList
 const heroPhoto = document.querySelector('.hero-photo-wrap');
 if (heroPhoto) {
   window.addEventListener('scroll', () => {
-    heroPhoto.style.transform = `translateY(${window.scrollY * 0.18}px)`;
+    // cap the drift so the photo never slides past .hero-content (overflow:hidden); off on mobile
+    const max = window.matchMedia('(max-width: 768px)').matches ? 0 : 40;
+    heroPhoto.style.transform = `translateY(${Math.min(window.scrollY * 0.18, max)}px)`;
   }, { passive: true });
 }
 
