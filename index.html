@@ -1669,11 +1669,21 @@ window.addEventListener('load', () => document.querySelector('header').classList
 // ── Parallax on hero photo
 const heroPhoto = document.querySelector('.hero-photo-wrap');
 if (heroPhoto) {
-  window.addEventListener('scroll', () => {
-    // cap the drift so the photo never slides past .hero-content (overflow:hidden); off on mobile
-    const max = window.matchMedia('(max-width: 768px)').matches ? 0 : 40;
-    heroPhoto.style.transform = `translateY(${Math.min(window.scrollY * 0.18, max)}px)`;
-  }, { passive: true });
+  // Parallax drift is capped by the free space under the photo ring inside .hero-content
+  // (overflow:hidden), so the photo never gets clipped — on any screen size.
+  const heroBox = document.querySelector('.hero-content');
+  let room = 0;
+  const measure = () => {
+    const prev = heroPhoto.style.transform;
+    heroPhoto.style.transform = 'none';
+    const ringBottom = heroPhoto.getBoundingClientRect().bottom + 16;   // ring sits ~14px outside the photo
+    room = Math.max(0, heroBox.getBoundingClientRect().bottom - ringBottom);
+    heroPhoto.style.transform = prev;
+  };
+  const drift = () => { heroPhoto.style.transform = `translateY(${Math.min(window.scrollY * 0.18, room)}px)`; };
+  window.addEventListener('load', () => { measure(); drift(); });
+  window.addEventListener('resize', () => { measure(); drift(); });
+  window.addEventListener('scroll', drift, { passive: true });
 }
 
 // ── Magnetic glow on arrows
