@@ -21,3 +21,9 @@ Fonts are served locally from fontsource packages (`npm pack @fontsource/<name>`
 ## Legacy notes
 Tokens marked LEGACY reproduce old hover/inherit quirks (dead hovers caused by #id specificity).
 Revisit them in the redesign.
+
+## Photo pipeline
+Source: `photo-source.jpg` (iPhone, Display P3). Pipeline: P3 -> sRGB, rembg (u2net_human_seg) cutout,
+head centered (cx=485, cy=512, side=930), smoothed silhouette + even rings (white 9px, Flame 5px) on Deep Navy,
+skin fix E: `{"hue":20,"hue_amt":0.75,"sat_target":0.36,"sat_amt":0.7,"shine":0.6}`, contrast +8%.
+Run from a folder with full_srgb.png / full_cut.png: `python3 sticker.py '<json>' out`. CSS photo filters are off.

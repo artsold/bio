@@ -102,7 +102,8 @@ V = {
    map={"about":"gold","work":"navy","experience-block":"orange","education":"gold","contact":"cherry"},
    extra={"--label-scale":"1.3","--text-scale":"1.3",
           "--title":"#FFFFFF","--display-stroke":"0.12em","--display-stroke-color":"#1A1A2E","--display-case":"uppercase",
-          }),  # photo: no grading (original look)
+          "--photo-filter":"none","--photo-filter-hover":"none",
+          }),  # photo: graded + sticker baked into file (.dev/sticker.py)
 }[v]
 
 def setvar(k,val):
