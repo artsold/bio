@@ -1577,7 +1577,7 @@ function buildCards() {
       <div class="car-thumb">
         ${v.ai ? '<span class="car-badge">AI</span>' : ''}
         ${v.src
-          ? `<video class="car-video" src="${v.src}" poster="${v.poster || ''}" muted autoplay loop playsinline preload="metadata" disablepictureinpicture></video>`
+          ? `<video class="car-video" src="${v.src}" poster="${v.poster || ''}" muted autoplay loop playsinline preload="${i < 5 ? 'auto' : 'metadata'}" disablepictureinpicture></video>`
           : `<iframe src="${embedUrl(v.id)}" frameborder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>`}
@@ -1670,14 +1670,26 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbo
 
 buildCards();
 
-// Local card videos: play while on screen, pause when off screen
+// Local card videos: play whenever any part is on screen, pause when fully off screen.
+// Robust against browsers that block or drop autoplay (iOS Low Power Mode, data saver, tab switches).
 (() => {
-  const vids = document.querySelectorAll('.car-video');
-  if (!('IntersectionObserver' in window)) return;
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { const p = e.target.play(); if (p) p.catch(() => {}); } else e.target.pause();
-  }), { threshold: 0.15 });
-  vids.forEach(v => io.observe(v));
+  const vids = [...document.querySelectorAll('.car-video')];
+  vids.forEach(v => { v.muted = true; v.defaultMuted = true; v.setAttribute('muted', ''); v.playsInline = true; });
+  const onScreen = new Set();
+  const tryPlay = v => { if (v.paused) { const p = v.play(); if (p) p.catch(() => {}); } };
+  const kick = () => { if (!document.hidden) onScreen.forEach(tryPlay); };
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { onScreen.add(e.target); tryPlay(e.target); }
+      else { onScreen.delete(e.target); e.target.pause(); }
+    }), { threshold: 0, rootMargin: '0px 120px' });
+    vids.forEach(v => io.observe(v));
+  } else vids.forEach(v => onScreen.add(v));
+  vids.forEach(v => v.addEventListener('canplay', () => { if (onScreen.has(v)) tryPlay(v); }));
+  // a tap anywhere unlocks playback where autoplay was refused
+  ['touchend', 'click', 'keydown'].forEach(ev => document.addEventListener(ev, kick, { passive: true }));
+  document.addEventListener('visibilitychange', kick);
+  setInterval(kick, 1500);   // watchdog: restart anything visible that got stalled or paused
 })();
 
 // ── Scroll reveal
