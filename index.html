@@ -659,10 +659,11 @@
   }
   .marquee-track {
     display: flex;
+    width: max-content;          /* -50% must equal exactly one copy of the items */
     white-space: nowrap;
-    animation: marquee 22s linear infinite;
+    animation: marquee 60s linear infinite;
+    will-change: transform;
   }
-  .marquee-track:hover { animation-play-state: paused; }
   .marquee-item {
     font-family: var(--font-display);
     font-size: calc(12px * var(--label-scale, 1));
@@ -1317,7 +1318,6 @@
     <span class="marquee-item"><span>–</span>7 Years Nordcurrent</span>
     <span class="marquee-item"><span>–</span>13+ Years Experience</span>
     <span class="marquee-item"><span>–</span>Vilnius LT</span>
-    <span class="marquee-item"><span>–</span>Motion Design</span>
   </div>
 </div>
 
@@ -1719,7 +1719,16 @@ window.addEventListener('scroll', () => {
   const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
   document.getElementById('scroll-progress').style.width = pct + '%';
 }, { passive: true });
-</script>
 
+// ── Marquee: constant speed (px/s) whatever the content width
+(() => {
+  const t = document.querySelector('.marquee-track');
+  if (!t) return;
+  const SPEED = 40;
+  const set = () => { t.style.animationDuration = (t.scrollWidth / 2 / SPEED) + 's'; };
+  window.addEventListener('load', set);
+  window.addEventListener('resize', set);
+})();
+</script>
 </body>
 </html>
