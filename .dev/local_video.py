@@ -3,7 +3,7 @@ p=sys.argv[1]; s=open(p).read()
 def rep(o,n,c=1):
     global s
     assert s.count(o)==c,(o[:70],s.count(o)); s=s.replace(o,n)
-MAP={"XdeWSCT_XkA":"cf-amusement-park","A3iu7YE_jVM":"cf-fail-hook","QUwZglDG3pQ":"cfd-food-fight","GN_d3L-CyPk":"ac-mexico"}
+MAP={"XdeWSCT_XkA":"cf-amusement-park","A3iu7YE_jVM":"cf-fail-hook","QUwZglDG3pQ":"cfd-food-fight","GN_d3L-CyPk":"ac-mexico","pAoLSMh7zlQ":"hc-patients","jgUprjQJv28":"mbc-murder","BByox-1JFPk":"mita-crime-novel","mVP9dEkILPo":"sa-squad","wuN-IWKt5Yk":"ws-brand-new"}
 for vid,f in MAP.items():
     rep(f'{{ id: "{vid}", ',f'{{ id: "{vid}", src: "media/{f}.mp4", poster: "media/{f}.jpg", ')
 # card: local <video> when src exists, YouTube otherwise
