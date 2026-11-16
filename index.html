@@ -928,6 +928,15 @@
     max-width: 380px;
     width: 90vw;
   }
+  .car-video {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; display: block; pointer-events: none;
+  }
+  .car-video::-webkit-media-controls, .car-video::-webkit-media-controls-start-playback-button { display: none !important; }
+  #lbVideo {
+    display: none; width: 100%; aspect-ratio: 9/16; max-height: 78vh;
+    object-fit: contain; background: #000; border: 1px solid var(--line);
+  }
   #lbFrame {
     width: 100%;
     aspect-ratio: 9/16;
@@ -1395,6 +1404,7 @@
     <button class="lb-close" id="lbClose">&#x2715;</button>
     <div class="lb-inner">
       <iframe id="lbFrame" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      <video id="lbVideo" playsinline loop disablepictureinpicture></video>
       <div class="lb-meta">
         <span class="lb-tag" id="lbTag"></span>
         <span class="lb-label" id="lbLabel"></span>
@@ -1525,11 +1535,11 @@
 
 <script>
 const VIDEOS = [
-  { id: "XdeWSCT_XkA", label: "Cooking Fever", ai: true, tag: "AI-generated",
+  { id: "XdeWSCT_XkA", src: "media/cf-amusement-park.mp4", poster: "media/cf-amusement-park.jpg", label: "Cooking Fever", ai: true, tag: "AI-generated",
     desc: "Appetite is the hook. Under the lights of the amusement park, one perfect hot dog turns a crowd into customers – and a food truck into an empire. Fully AI-generated, from script to final frame." },
-  { id: "GN_d3L-CyPk", label: "Airplane Chefs",     desc: "New location launch ad for Airplane Chefs – designed to re-engage lapsed players and convert lookalike audiences through destination reveal, gameplay loop, and reward moment." },
-  { id: "A3iu7YE_jVM", label: "Cooking Fever",       desc: "Fail-state hook for Cooking Fever – deliberately engineered to trigger loss aversion and compulsive retry behaviour. One of the most effective creative patterns in casual gaming UA." },
-  { id: "QUwZglDG3pQ", label: "Cooking Fever Duels", desc: "PvP launch ad for Cooking Fever Duels – competitive hook built around character vs character duels, progression loop, and win state close. Designed to attract players who respond to rivalry and instant reward signals." },
+  { id: "GN_d3L-CyPk", src: "media/ac-mexico.mp4", poster: "media/ac-mexico.jpg", label: "Airplane Chefs",     desc: "New location launch ad for Airplane Chefs – designed to re-engage lapsed players and convert lookalike audiences through destination reveal, gameplay loop, and reward moment." },
+  { id: "A3iu7YE_jVM", src: "media/cf-fail-hook.mp4", poster: "media/cf-fail-hook.jpg", label: "Cooking Fever",       desc: "Fail-state hook for Cooking Fever – deliberately engineered to trigger loss aversion and compulsive retry behaviour. One of the most effective creative patterns in casual gaming UA." },
+  { id: "QUwZglDG3pQ", src: "media/cfd-food-fight.mp4", poster: "media/cfd-food-fight.jpg", label: "Cooking Fever Duels", desc: "PvP launch ad for Cooking Fever Duels – competitive hook built around character vs character duels, progression loop, and win state close. Designed to attract players who respond to rivalry and instant reward signals." },
   { id: "pAoLSMh7zlQ", label: "Happy Clinic",        desc: "Two comic patient stories used as a hook – humor-first format designed to drive installs through entertainment, not gameplay demo." },
   { id: "jgUprjQJv28", label: "Murder by Choice",    desc: "Opens on a crime scene, pulls back to reveal the paradise that hides it. Thriller pacing builds tension before the genre flip lands – targets true crime and horror audiences." },
   { id: "BByox-1JFPk", label: "Murder in the Alps",  desc: "Horror ad for Murder in the Alps – cozy mystery opening collapses into psychological horror through twin imagery and escalating crime scenes." },
@@ -1546,6 +1556,7 @@ const prevBtn = document.getElementById("carPrev");
 const nextBtn = document.getElementById("carNext");
 const lightbox = document.getElementById("lightbox");
 const lbFrame  = document.getElementById("lbFrame");
+const lbVideo  = document.getElementById("lbVideo");
 const lbTag    = document.getElementById("lbTag");
 const lbLabel  = document.getElementById("lbLabel");
 const lbClose  = document.getElementById("lbClose");
@@ -1565,9 +1576,11 @@ function buildCards() {
     card.innerHTML = `
       <div class="car-thumb">
         ${v.ai ? '<span class="car-badge">AI</span>' : ''}
-        <iframe src="${embedUrl(v.id)}" frameborder="0"
+        ${v.src
+          ? `<video class="car-video" src="${v.src}" poster="${v.poster || ''}" muted autoplay loop playsinline preload="metadata" disablepictureinpicture></video>`
+          : `<iframe src="${embedUrl(v.id)}" frameborder="0"
           allow="autoplay; fullscreen; picture-in-picture"
-          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>`}
         <div style="position:absolute;inset:0;z-index:2;"></div>
       </div>
       <div class="car-info">
@@ -1631,7 +1644,15 @@ track.addEventListener("scroll", () => {
 
 // Lightbox
 function openLightbox(v) {
-  lbFrame.src = embedUrl(v.id);
+  if (v.src) {
+    lbFrame.style.display = "none"; lbFrame.src = "";
+    lbVideo.style.display = "block"; lbVideo.src = v.src; lbVideo.poster = v.poster || "";
+    lbVideo.muted = false; lbVideo.currentTime = 0;
+    lbVideo.play().catch(() => { lbVideo.muted = true; lbVideo.play(); });  // fallback if sound is blocked
+  } else {
+    lbVideo.pause(); lbVideo.removeAttribute("src"); lbVideo.style.display = "none";
+    lbFrame.style.display = "block"; lbFrame.src = embedUrl(v.id);
+  }
   lbTag.textContent = v.tag;
   lbLabel.textContent = v.label;
   lightbox.classList.add("open");
@@ -1640,6 +1661,7 @@ function openLightbox(v) {
 function closeLightbox() {
   lightbox.classList.remove("open");
   lbFrame.src = "";
+  lbVideo.pause(); lbVideo.removeAttribute("src"); lbVideo.load();
   document.body.style.overflow = "";
 }
 lbClose.addEventListener("click", closeLightbox);
@@ -1647,6 +1669,16 @@ lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightb
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
 
 buildCards();
+
+// Local card videos: play while on screen, pause when off screen
+(() => {
+  const vids = document.querySelectorAll('.car-video');
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { const p = e.target.play(); if (p) p.catch(() => {}); } else e.target.pause();
+  }), { threshold: 0.15 });
+  vids.forEach(v => io.observe(v));
+})();
 
 // ── Scroll reveal
 const revealEls = document.querySelectorAll('.reveal, .reveal-left, .section-header');
