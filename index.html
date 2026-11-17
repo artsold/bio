@@ -1537,6 +1537,8 @@
 const VIDEOS = [
   { id: "XdeWSCT_XkA", src: "media/cf-amusement-park.mp4", poster: "media/cf-amusement-park.jpg", label: "Cooking Fever", ai: true, tag: "AI-generated",
     desc: "Appetite is the hook. Under the lights of the amusement park, one perfect hot dog turns a crowd into customers – and a food truck into an empire. Fully AI-generated, from script to final frame." },
+  { id: "pocket-styler", src: "media/pocket-styler.mp4", poster: "media/pocket-styler.jpg", label: "Pocket Styler", ai: true, badge: "AI-assisted", tag: "AI-assisted",
+    desc: "Event ad for Pocket Styler – a mystery gift box reveals the prize outfit, a live leaderboard and style ratings turn dress-up into competition, and the close promises exclusive prizes. AI-assisted production." },
   { id: "GN_d3L-CyPk", src: "media/ac-mexico.mp4", poster: "media/ac-mexico.jpg", label: "Airplane Chefs",     desc: "New location launch ad for Airplane Chefs – designed to re-engage lapsed players and convert lookalike audiences through destination reveal, gameplay loop, and reward moment." },
   { id: "A3iu7YE_jVM", src: "media/cf-fail-hook.mp4", poster: "media/cf-fail-hook.jpg", label: "Cooking Fever",       desc: "Fail-state hook for Cooking Fever – deliberately engineered to trigger loss aversion and compulsive retry behaviour. One of the most effective creative patterns in casual gaming UA." },
   { id: "QUwZglDG3pQ", src: "media/cfd-food-fight.mp4", poster: "media/cfd-food-fight.jpg", label: "Cooking Fever Duels", desc: "PvP launch ad for Cooking Fever Duels – competitive hook built around character vs character duels, progression loop, and win state close. Designed to attract players who respond to rivalry and instant reward signals." },
@@ -1575,7 +1577,7 @@ function buildCards() {
     card.className = "car-card";
     card.innerHTML = `
       <div class="car-thumb">
-        ${v.ai ? '<span class="car-badge">AI</span>' : ''}
+        ${v.ai ? `<span class="car-badge">${v.badge || 'AI'}</span>` : ''}
         ${v.src
           ? `<video class="car-video" src="${v.src}" poster="${v.poster || ''}" muted autoplay loop playsinline preload="${i < 5 ? 'auto' : 'metadata'}" disablepictureinpicture></video>`
           : `<iframe src="${embedUrl(v.id)}" frameborder="0"
