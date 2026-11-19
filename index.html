@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Owner opt-out: open the site once with ?notrack=1 on each device (?notrack=0 to undo) -->
+<script>
+  (function(){
+    try {
+      var q = location.search;
+      if (/[?&]notrack=1\b/.test(q)) localStorage.setItem('notrack', '1');
+      if (/[?&]notrack=0\b/.test(q)) localStorage.removeItem('notrack');
+      if (localStorage.getItem('notrack') === '1') window['ga-disable-G-0MXNEXH767'] = true;
+    } catch (e) {}
+  })();
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MXNEXH767"></script>
 <script>
@@ -1792,6 +1803,16 @@ window.addEventListener('scroll', () => {
   window.addEventListener('load', set);
   window.addEventListener('resize', set);
 })();
+</script>
+<script>
+  // GA4: CV download event, with button location
+  document.querySelectorAll('a[href^="CV_ArtiomSoldatov.pdf"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var where = a.classList.contains('hero-cv--mobile') ? 'hero_mobile'
+                : a.classList.contains('hero-cv') ? 'hero' : 'footer';
+      if (typeof gtag === 'function') gtag('event', 'cv_download', { cv_location: where });
+    });
+  });
 </script>
 </body>
 </html>
