@@ -1290,6 +1290,10 @@
 
   .car-card { border-radius: 26px; box-shadow: 0 0 0 4px var(--card-ring), 0 10px 0 4px var(--card-drop); background: var(--card-face); overflow: hidden; }
   .car-thumb { border-radius: 22px 22px 0 0; }
+  /* room for the card ring on the left: the track clips overflow */
+  .carousel-wrap { padding-left: 42px; }
+  .carousel-track { padding-left: 6px; scroll-padding-left: 6px; }
+  @media (max-width: 768px) { .carousel-wrap { padding-left: 18px; } }
 
   @media (max-width: 768px) {
     .about-grid, .exp-list, .contact-inner { padding-left: 16px; padding-right: 16px; }
