@@ -1290,6 +1290,8 @@
 
   .car-card { border-radius: 26px; box-shadow: 0 0 0 4px var(--card-ring), 0 10px 0 4px var(--card-drop); background: var(--card-face); overflow: hidden; }
   .car-thumb { border-radius: 22px 22px 0 0; }
+  .car-card:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--panel-bg), 0 10px 0 4px var(--card-drop); }   /* white ring: stays inside the clipped track */
+  .car-dot:focus-visible, .car-arrow:focus-visible, .lb-close:focus-visible { outline: 3px solid var(--panel-bg); outline-offset: 3px; }
   /* room for the card ring on the left: the track clips overflow */
   .carousel-wrap { padding-left: 42px; }
   .carousel-track { padding-left: 6px; scroll-padding-left: 6px; }
@@ -1479,8 +1481,8 @@
     <button class="car-arrow car-next" id="carNext" aria-label="Next">&#8594;</button>
   </div>
   <div class="carousel-dots" id="carouselDots"></div>
-  <div class="lightbox" id="lightbox">
-    <button class="lb-close" id="lbClose">&#x2715;</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Ad video">
+    <button class="lb-close" id="lbClose" aria-label="Close video">&#x2715;</button>
     <div class="lb-inner">
       <iframe id="lbFrame" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
       <video id="lbVideo" playsinline loop disablepictureinpicture></video>
@@ -1655,6 +1657,9 @@ function buildCards() {
   filteredVideos.forEach((v, i) => {
     const card = document.createElement("div");
     card.className = "car-card";
+    card.setAttribute("role", "button");
+    card.tabIndex = 0;
+    card.setAttribute("aria-label", `Play ${v.label} ad with sound`);
     card.innerHTML = `
       <div class="car-thumb">
         ${v.ai ? `<span class="car-badge">${v.badge || 'AI'}</span>` : ''}
@@ -1671,10 +1676,12 @@ function buildCards() {
       </div>
     `;
     card.addEventListener("click", () => openLightbox(v));
+    card.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLightbox(v); } });
     track.appendChild(card);
 
     const dot = document.createElement("button");
     dot.className = "car-dot" + (i === 0 ? " active" : "");
+    dot.setAttribute("aria-label", `Show ad ${i + 1}: ${v.label}`);
     dot.addEventListener("click", () => goTo(i));
     dotsEl.appendChild(dot);
   });
@@ -1725,7 +1732,9 @@ track.addEventListener("scroll", () => {
 }, { passive: true });
 
 // Lightbox
+let lbReturnFocus = null;
 function openLightbox(v) {
+  lbReturnFocus = document.activeElement;
   if (v.src) {
     lbFrame.style.display = "none"; lbFrame.src = "";
     lbVideo.style.display = "block"; lbVideo.src = v.src; lbVideo.poster = v.poster || "";
@@ -1738,6 +1747,7 @@ function openLightbox(v) {
   lbTag.textContent = v.tag;
   lbLabel.textContent = v.label;
   lightbox.classList.add("open");
+  lbClose.focus();
   document.body.style.overflow = "hidden";
 }
 function closeLightbox() {
@@ -1745,10 +1755,16 @@ function closeLightbox() {
   lbFrame.src = "";
   lbVideo.pause(); lbVideo.removeAttribute("src"); lbVideo.load();
   document.body.style.overflow = "";
+  if (lbReturnFocus && lbReturnFocus.focus) lbReturnFocus.focus();
+  lbReturnFocus = null;
 }
 lbClose.addEventListener("click", closeLightbox);
 lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
-document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+document.addEventListener("keydown", e => {
+  if (!lightbox.classList.contains("open")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "Tab") { e.preventDefault(); lbClose.focus(); }   // keep focus inside the open video
+});
 
 buildCards();
 
