@@ -1271,6 +1271,16 @@
   #contact > .contact-cta em { color: var(--panel-bg); }
   .contact-left { justify-content: flex-end; }
   .contact-left .contact-links { margin-top: 0; }
+  /* footer CV button = hero CV button */
+  .download-btn {
+    font-family: var(--font-display); font-size: var(--hero-cv-size, 20px); font-weight: 400; letter-spacing: 0.03em;
+    text-transform: uppercase; line-height: 1; padding: 16px 26px 14px; border: 0;
+    background: var(--hero-cv-bg, var(--cta)); color: var(--hero-cv-text, var(--on-accent));
+    box-shadow: var(--btn-shadow); transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .download-btn svg { width: 1em; height: 1em; stroke-width: 2.6; }
+  .download-btn:hover { background: var(--hero-cv-bg, var(--cta)); color: var(--hero-cv-text, var(--on-accent)); transform: translateY(2px); box-shadow: 0 2px 0 var(--hero-cv-edge, #1A1A2E); }
+  .download-btn:active { transform: translateY(5px); box-shadow: none; }
   .link-arrow { color: var(--panel-accent); }
 
   .car-card { border-radius: 26px; box-shadow: 0 0 0 4px var(--card-ring), 0 10px 0 4px var(--card-drop); background: var(--card-face); overflow: hidden; }
