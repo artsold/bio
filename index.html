@@ -1305,6 +1305,13 @@
   .hero-tagline { font-family: var(--font-body); font-weight: 700; font-size: 17px; line-height: 1.4; color: var(--text); margin-top: 6px; opacity: 0; animation: fadeUp 0.8s 0.7s forwards; }
   .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin: 28px 0 8px; }
   .hero-actions .hero-status { margin: 0; align-self: center; }
+  /* centre the caps optically: trim the line box to cap height where supported, else nudge with padding */
+  .hero-status { line-height: 1; padding-top: 10px; padding-bottom: 9px; }
+  .hero-status-text { display: block; }
+  @supports (text-box: trim-both cap alphabetic) {
+    .hero-status { padding-top: 13px; padding-bottom: 13px; }
+    .hero-status-text { text-box: trim-both cap alphabetic; }
+  }
   .hero-text-col .hero-actions .hero-cv { margin: 0; }
   .hero-actions--mobile { display: none; }
   @media (max-width: 768px) {
@@ -1344,7 +1351,7 @@
         <div class="hero-tagline">Video ads built on AI pipelines. Proven in paid rotation.</div>
         <div class="hero-actions">
           <a href="CV_ArtiomSoldatov.pdf?v=20261116" download="CV_ArtiomSoldatov.pdf" class="hero-cv"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Download CV</span></a>
-          <span class="hero-status"><span class="dot"></span>Open to work · Remote</span>
+          <span class="hero-status"><span class="dot"></span><span class="hero-status-text">Open to work · Remote</span></span>
         </div>
       </div>
       <div class="hero-photo-col">
@@ -1354,7 +1361,7 @@
         </div>
         <div class="hero-actions hero-actions--mobile">
           <a href="CV_ArtiomSoldatov.pdf?v=20261116" download="CV_ArtiomSoldatov.pdf" class="hero-cv hero-cv--mobile"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Download CV</span></a>
-          <span class="hero-status"><span class="dot"></span>Open to work · Remote</span>
+          <span class="hero-status"><span class="dot"></span><span class="hero-status-text">Open to work · Remote</span></span>
         </div>
       </div>
     </div>
