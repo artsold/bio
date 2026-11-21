@@ -40,7 +40,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Lilita+One&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
   /* ════════════════════════════════════════════════════════════
      DESIGN TOKENS
@@ -53,7 +53,7 @@
     /* typography */
     --font-display: 'Lilita One', 'Nunito', sans-serif;   /* headings, big numbers */
     --font-body:    'Nunito', sans-serif;                   /* running text */
-    --font-mono:    'Nunito', sans-serif;                   /* labels, meta, nav */
+    --font-mono:    'DM Mono', monospace;                   /* labels, meta, nav */
     --marquee-bg:   #1A1A2E;
     --marquee-text: #FFFFFF;
     --display-weight:   400;
@@ -361,7 +361,7 @@
   .logo-mark, nav a, .hero-eyebrow, .stat-label, .section-num,
   .skill-group-label, .tag, .exp-company, .exp-period, .exp-divider,
   .car-info-tag, .lb-tag, .link-type, .contact-location, .lang-level,
-  .footer-copy, .download-btn { font-family: var(--font-mono); font-weight: 800; }
+  .footer-copy, .download-btn { font-family: var(--font-mono); }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -432,8 +432,9 @@
 
   nav { display: flex; gap: 32px; }
   nav a {
-    font-size: 15px;
-    letter-spacing: 0.02em;
+    font-size: calc(12px * var(--label-scale, 1));
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     color: var(--muted);
     transition: color 0.2s;
     position: relative;
@@ -486,8 +487,9 @@
   }
   .hero-status .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--status-dot, var(--accent)); box-shadow: 0 0 0 3px rgba(255,255,255,0.15); }
   .hero-eyebrow {
-    font-size: 19px;
-    letter-spacing: 0;
+    font-size: calc(12px * var(--label-scale, 1));
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
     color: var(--text-2);
     margin-bottom: 16px;
     opacity: 0;
@@ -600,16 +602,17 @@
 
   .stat-num {
     font-family: var(--font-display);
-    font-size: calc(40px * var(--text-scale, 1));
+    font-size: calc(36px * var(--text-scale, 1));
     font-weight: var(--display-weight);
-    color: var(--text);
+    color: var(--title, var(--text-2));
     line-height: 1;
   }
   .stat-num.counted { animation: countPulse 0.4s ease; }
   .stat-label {
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    color: var(--text);
+    font-size: calc(10px * var(--label-scale, 1));
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
     margin-top: 4px;
   }
 
@@ -627,11 +630,10 @@
 
 
   .section-num {
-    font-size: 14px;
+    font-size: calc(10px * var(--label-scale, 1));
     color: var(--num);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.2em;
   }
-  .section-num::after { content: ' /'; }
 
   h2 {
     font-family: var(--font-display);
@@ -659,8 +661,8 @@
   }
   .marquee-item {
     font-family: var(--font-display);
-    font-size: 15px;
-    letter-spacing: 0.04em;
+    font-size: calc(12px * var(--label-scale, 1));
+    letter-spacing: 0.25em;
     color: var(--marquee-text);
     padding: 0 32px;
   }
@@ -678,19 +680,20 @@
   .about-skills { padding: 48px; }
   .skill-group { margin-bottom: 32px; }
   .skill-group-label {
-    font-size: 13px;
-    letter-spacing: 0.04em;
+    font-size: calc(10px * var(--label-scale, 1));
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--text-3);
     margin-bottom: 12px;
   }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .tag {
-    font-size: 14px;
-    letter-spacing: 0.02em;
+    font-size: calc(12px * var(--label-scale, 1));
+    letter-spacing: 0.1em;
     padding: 5px 12px;
     border: 1px solid var(--tag-border);
     color: var(--tag-text);
+    text-transform: uppercase;
     transition: all 0.2s;
     background: var(--tag-bg);
   }
@@ -724,8 +727,8 @@
   .exp-item:hover .exp-company { color: var(--accent-ink-hover); }
 
   .exp-company {
-    font-size: 13px;
-    letter-spacing: 0.04em;
+    font-size: calc(10px * var(--label-scale, 1));
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--accent-ink);
     padding-top: 4px;
@@ -751,7 +754,7 @@
     font-size: calc(10px * var(--label-scale, 1));
     color: var(--subtle);
     text-align: right;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.15em;
     padding-top: 6px;
     white-space: nowrap;
   }
@@ -952,7 +955,7 @@
     border: 1px solid var(--accent-ink);
     padding: 3px 8px;
   }
-  .lb-label { font-size: calc(12px * var(--text-scale, 1)); color: var(--text); letter-spacing: 0.02em; }
+  .lb-label { font-size: calc(12px * var(--text-scale, 1)); color: var(--text); letter-spacing: 0.08em; }
 
   /* ── CONTACT ──────────────────────────────────────────── */
   .contact-inner {
@@ -990,7 +993,7 @@
     gap: 16px;
     color: var(--text-3);
     font-size: calc(12px * var(--text-scale, 1));
-    letter-spacing: 0.02em;
+    letter-spacing: 0.1em;
     padding: 14px 0;
     border-bottom: 1px solid var(--hairline);
     transition: color 0.2s;
@@ -1016,14 +1019,14 @@
   .contact-city {
     font-family: var(--font-display);
     font-size: var(--city-size);
-    color: var(--text);
+    color: var(--em);
     line-height: 1;
     margin-bottom: 48px;
   }
   .contact-langs { display: flex; gap: 32px; }
   .lang-item { display: flex; flex-direction: column; gap: 3px; }
   .lang-name { font-size: calc(13px * var(--text-scale, 1)); color: var(--text); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; }
-  .lang-level { font-size: calc(10px * var(--label-scale, 1)); color: var(--subtle); letter-spacing: 0.02em; }
+  .lang-level { font-size: calc(10px * var(--label-scale, 1)); color: var(--subtle); letter-spacing: 0.08em; }
 
   /* ── DOWNLOAD CV BUTTON ───────────────────────────────── */
   .download-wrap { text-align: center; padding: 40px 0 20px; }
@@ -1052,13 +1055,13 @@
     justify-content: space-between;
     align-items: center;
   }
-  .footer-copy { font-size: calc(10px * var(--label-scale, 1)); color: var(--muted); letter-spacing: 0.04em; }
+  .footer-copy { font-size: calc(10px * var(--label-scale, 1)); color: var(--muted); letter-spacing: 0.15em; }
   .footer-tag {
     font-family: var(--font-display);
     font-weight: var(--display-weight);
     font-size: calc(12px * var(--text-scale, 1));
     color: var(--text-2);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.1em;
   }
 
   /* ── ANIMATIONS ───────────────────────────────────────── */
@@ -1134,7 +1137,7 @@
   @media (max-width: 768px) {
     .header-top { padding: 16px 20px; flex-wrap: wrap; gap: 12px; }
     nav { gap: 10px; flex-wrap: wrap; }
-    nav a { font-size: 14px; letter-spacing: 0.02em; }
+    nav a { font-size: calc(10px * var(--label-scale, 1)); letter-spacing: 0.12em; }
     .hero-body { padding: 24px 24px 0; }
     .hero-content { grid-template-columns: 1fr; }
     .hero-photo-col { justify-content: flex-start; margin-top: 24px; padding-left: 16px; }  /* room for the ring (-14px) inside overflow:hidden */
@@ -1163,7 +1166,7 @@
   }
 
   
-  #experience-block { border-top: 1px solid var(--hairline); }
+  #experience-block .section-header { border-top: 1px solid var(--hairline); }
 
   /* section colors now come from [data-theme] tokens (see top) */
 
@@ -1176,11 +1179,10 @@
     margin-bottom: 4px;
   }
   .car-info-label {
-    font-family: var(--font-display);
-    font-size: 22px;
+    font-size: var(--card-label-size);
     font-weight: 400;
     color: var(--text);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
     margin-bottom: 8px;
   }
   .car-info-desc {
@@ -1207,8 +1209,9 @@
   .hero-photo-wrap:hover::after { transform: scale(1.03); }
   .car-card { box-shadow: var(--card-shadow); background: var(--card-bg, transparent); }
   .car-arrow { background: var(--ctl-bg, transparent); color: var(--ctl-text, var(--text)); }
-  .logo-name, .logo-surname, h2, .contact-cta { text-shadow: var(--display-shadow); }
-  .logo-name, .logo-surname, h2, .contact-cta {
+  /* drop edge under the outlined display type: a filter, so it sits under the stroke the same way in every browser */
+  .logo-name, .logo-surname, h2, .contact-cta { filter: drop-shadow(0 0.12em 0 var(--display-stroke-color, #1A1A2E)); }
+  .logo-name, .logo-surname, h2, .contact-cta, .contact-city, .stat-num {
     -webkit-text-stroke: var(--display-stroke, 0) var(--display-stroke-color, transparent);
     paint-order: stroke fill;
   }
@@ -1240,6 +1243,54 @@
   @media (max-width: 480px) { :root { --hero-size: clamp(40px, 15vw, 60px); --cta-size: clamp(32px, 11vw, 48px); --h2-size: clamp(34px, 11vw, 46px); --city-size: 40px; } }
   .download-btn { background: var(--cta); color: var(--cta-hover-text); border-color: var(--cta); font-weight: 700; }
   .download-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0,0,0,0.25); }
+  /* ── PANELS & GROUNDS (game-UI look) ──────────────────── */
+  :root {
+    --panel-bg:   #FFFFFF;
+    --panel-ink:  #1A1A2E;
+    --panel-edge: #1A1A2E;
+    --panel-accent: #FF4B12;
+    --card-ring:  #FFD700;
+    --card-drop:  #FF4B12;
+    --card-face:  #24243C;
+  }
+
+  .about-grid { gap: 36px; padding: 0 48px 52px; }
+  .about-text, .about-skills, .exp-item, .contact-left, .contact-right {
+    background: var(--panel-bg);
+    border: 0 !important;
+    box-shadow: 0 0 0 4px var(--panel-edge), 0 10px 0 4px var(--panel-edge);
+    --text: var(--panel-ink); --body: var(--panel-ink); --desc: var(--panel-ink);
+  }
+  .about-text, .about-skills, .contact-left, .contact-right { border-radius: 26px; padding: 34px; }
+  .exp-list { padding: 0 48px 48px; display: grid; gap: 32px; }
+  #experience-block { padding-top: 48px; border-top: 0; }
+  .exp-item { border-radius: 22px; }
+  .exp-item::before { display: none; }
+  .contact-inner { padding: 0 48px 48px; gap: 36px; }
+  #contact > .contact-cta { padding: 8px 48px 36px; font-size: clamp(30px, 3.2vw, 48px); line-height: 1.05; color: var(--panel-ink); -webkit-text-stroke: 0; filter: none; }
+  #contact > .contact-cta em { color: var(--panel-bg); }
+  .contact-left { justify-content: flex-end; }
+  .contact-left .contact-links { margin-top: 0; }
+  /* footer CV button = hero CV button */
+  .download-btn {
+    font-family: var(--font-display); font-size: var(--hero-cv-size, 20px); font-weight: 400; letter-spacing: 0.03em;
+    text-transform: uppercase; line-height: 1; padding: 16px 26px 14px; border: 0;
+    background: var(--hero-cv-bg, var(--cta)); color: var(--hero-cv-text, var(--on-accent));
+    box-shadow: var(--btn-shadow); transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .download-btn svg { width: 1em; height: 1em; stroke-width: 2.6; }
+  .download-btn:hover { background: var(--hero-cv-bg, var(--cta)); color: var(--hero-cv-text, var(--on-accent)); transform: translateY(2px); box-shadow: 0 2px 0 var(--hero-cv-edge, #1A1A2E); }
+  .download-btn:active { transform: translateY(5px); box-shadow: none; }
+  .link-arrow { color: var(--panel-accent); }
+
+  .car-card { border-radius: 26px; box-shadow: 0 0 0 4px var(--card-ring), 0 10px 0 4px var(--card-drop); background: var(--card-face); overflow: hidden; }
+  .car-thumb { border-radius: 22px 22px 0 0; }
+
+  @media (max-width: 768px) {
+    .about-grid, .exp-list, .contact-inner { padding-left: 16px; padding-right: 16px; }
+    #contact > .contact-cta { padding: 4px 16px 28px; font-size: 30px; }
+    .about-text, .about-skills, .contact-left, .contact-right { padding: 22px; }
+  }
 </style>
 </head>
 <body>
@@ -1403,7 +1454,7 @@
       </div>
     </div>
   </div>
-  <div id="experience-block" data-theme="navy">
+  <div id="experience-block" data-theme="orange">
 
   <div class="exp-list">
     <div class="exp-item reveal">
@@ -1469,14 +1520,14 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" data-theme="flame">
+<section id="contact" data-theme="cherry">
   <div class="section-header reveal">
     <span class="section-num">04</span>
     <h2>Contact</h2>
   </div>
+  <div class="contact-cta reveal">Let's build the next <em>winning</em> creative</div>
   <div class="contact-inner">
     <div class="contact-left reveal">
-      <div class="contact-cta">Let's build <br> the next <em>winning</em> <br> creative </div>
       <div class="contact-links">
         <a class="contact-link" href="mailto:artiom.soldatov@gmail.com">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
