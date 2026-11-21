@@ -1144,7 +1144,9 @@
     nav a { font-size: calc(10px * var(--label-scale, 1)); letter-spacing: 0.12em; }
     .hero-body { padding: 24px 24px 0; }
     .hero-content { grid-template-columns: 1fr; }
-    .hero-photo-col { justify-content: flex-start; margin-top: 24px; padding-left: 16px; }  /* room for the ring (-14px) inside overflow:hidden */
+    .hero-photo-col { justify-content: flex-start; margin-top: 24px; padding-left: 0; }
+    /* photo and buttons sit on the text line; the clip box reaches 16px further left so the photo ring (-14px) is not cut */
+    .hero-content { margin-left: -16px; padding-left: 16px; }
     .hero-photo-wrap { width: 160px; }
     .hero-footer { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
     .hero-stat:nth-child(3) { grid-column: 1/3; border-right: none; border-top: 1px solid var(--line); }
@@ -1267,7 +1269,7 @@
   }
   .about-text, .about-skills, .contact-left, .contact-right { border-radius: 26px; padding: 34px; }
   .exp-list { padding: 0 48px 48px; display: grid; gap: 32px; }
-  #experience-block { padding-top: 48px; border-top: 0; }
+  #experience-block { padding-top: 0; border-top: 0; }
   .exp-item { border-radius: 22px; }
   .exp-item::before { display: none; }
   .exp-item.reveal { transition: background 0.3s, opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
@@ -1422,7 +1424,6 @@
 <!-- ABOUT -->
 <section id="about" data-theme="gold">
   <div class="section-header reveal">
-    <span class="section-num">01</span>
     <h2>About</h2>
   </div>
   <div class="about-grid">
@@ -1470,7 +1471,6 @@
 <!-- WORK -->
 <section id="work" data-theme="navy">
   <div class="section-header reveal">
-    <span class="section-num">02</span>
     <h2>Work</h2>
   </div>
   <div class="carousel-wrap">
@@ -1493,6 +1493,9 @@
     </div>
   </div>
   <div id="experience-block" data-theme="orange">
+  <div class="section-header reveal">
+    <h2>Experience</h2>
+  </div>
 
   <div class="exp-list">
     <div class="exp-item reveal">
@@ -1526,7 +1529,6 @@
 <!-- EDUCATION -->
 <section id="education" data-theme="gold">
   <div class="section-header reveal">
-    <span class="section-num">03</span>
     <h2>Education</h2>
   </div>
   <div class="exp-list">
@@ -1560,7 +1562,6 @@
 <!-- CONTACT -->
 <section id="contact" data-theme="cherry">
   <div class="section-header reveal">
-    <span class="section-num">04</span>
     <h2>Contact</h2>
   </div>
   <div class="contact-cta reveal">Let's build the next <em>winning</em> creative</div>
