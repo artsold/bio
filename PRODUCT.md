@@ -8,7 +8,7 @@ web
 
 ## Users
 
-Primary: UA and creative leads at mobile game studios (casual, mid-core, shooters) who are hiring a remote UA Creative / Motion Designer. They open the site from a CV link, LinkedIn or a referral, usually between other candidates, and decide within a minute or two whether the ads are good enough to bring the person to an interview. They know the vocabulary (hooks, IPM, CPI/ROAS, Tier-1, A/B tests) and judge by the ads themselves.
+Primary: UA and creative leads at casual and hyper-casual mobile game studios who are hiring a remote UA Creative / Motion Designer. They open the site from a CV link, LinkedIn or a referral, usually between other candidates, and decide within a minute or two whether the ads are good enough to bring the person to an interview. They know the vocabulary (hooks, IPM, CPI/ROAS, Tier-1, A/B tests) and judge by the ads themselves.
 
 Secondary: recruiters and HR who forward the profile; they need the role, experience, location and the CV quickly.
 
@@ -40,6 +40,8 @@ Full-cycle ownership by one person: concept → copy (ad script) → final video
 - Name: Artiom Soldatov. Domain souldatov.com.
 - English copy.
 - Ad labelling by production type (AI-generated, AI-assisted, classic) is part of the honest story and stays.
+- The redesign keeps the current content, section order and functions (hero, stats, marquee, About, Work carousel, Experience, Education, Contact, CV download). Only the visual wrapper changes.
+- Keep the existing palette as close as possible: flame #FF4B12, gold #FFD700, navy #1A1A2E (orange #FF8C00 and cherry #FF2D55 as secondary). The playful casual-game character stays.
 
 ## Evidence on Hand
 
