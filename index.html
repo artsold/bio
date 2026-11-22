@@ -1349,6 +1349,21 @@
     100% { transform: scale(3.2); opacity: 0; }
   }
   @media (prefers-reduced-motion: reduce) { .hero-status .dot::after { animation: none; } }
+  /* ── HERO ENTRANCE ORDER: top to bottom, as the eye reads ──
+     name 0.15s → role 0.3 → tagline 0.4 → photo 0.4 (ring 0.7) → CV 0.55 → status 0.65 → stats 0.75/0.85/0.95 */
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .hero-logo { animation: fadeUp 0.7s 0.15s forwards; }
+  .hero-role { animation: fadeUp 0.7s 0.3s forwards; }
+  .hero-tagline { animation: fadeUp 0.7s 0.4s forwards; }
+  .hero-photo { opacity: 0; animation: fadeIn 0.7s 0.4s forwards; }
+  .photo-frame { animation: fadeIn 0.7s 0.7s forwards; }
+  .hero-text-col .hero-cv, .hero-cv--mobile { animation: fadeUp 0.7s 0.55s forwards; }
+  .hero-actions .hero-status { animation: fadeUp 0.7s 0.65s forwards; }
+  .hero-stat { animation-duration: 0.7s; }
+  .hero-stat:nth-child(1) { animation-delay: 0.75s; }
+  .hero-stat:nth-child(2) { animation-delay: 0.85s; }
+  .hero-stat:nth-child(3) { animation-delay: 0.95s; }
+  @media (prefers-reduced-motion: reduce) { .hero-photo { animation: none !important; opacity: 1 !important; } }
 </style>
 </head>
 <body>
@@ -1847,11 +1862,16 @@ const countObs = new IntersectionObserver(entries => {
     const suffix = raw.replace(String(num), '');
     let cur = 0;
     const inc = num / (1200 / 16);
-    const timer = setInterval(() => {
-      cur = Math.min(cur + inc, num);
-      el.textContent = Math.round(cur) + suffix;
-      if (cur >= num) { el.textContent = raw; el.classList.add('counted'); clearInterval(timer); }
-    }, 16);
+    // start counting when this stat starts to fade in, not while it is still invisible
+    const stat = el.closest('.hero-stat');
+    const wait = stat ? (parseFloat(getComputedStyle(stat).animationDelay) || 0) * 1000 : 0;
+    setTimeout(() => {
+      const timer = setInterval(() => {
+        cur = Math.min(cur + inc, num);
+        el.textContent = Math.round(cur) + suffix;
+        if (cur >= num) { el.textContent = raw; el.classList.add('counted'); clearInterval(timer); }
+      }, 16);
+    }, wait);
     countObs.unobserve(el);
   });
 }, { threshold: 0.5 });
